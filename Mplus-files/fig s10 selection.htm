@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+a:link
+{
+    color: black;
+    text-decoration: none;
+}
+a[name]:hover
+{
+    text-decoration: none;
+}
+a:hover
+{
+    color: blue;
+    text-decoration: underline;
+}
+a:visited
+{
+    color: black;
+    text-decoration: none;
+}
+.heading
+{
+    color: black;
+    font-weight: bold;
+    font-size: 110%;
+}
+.heading:hover
+{
+    color: black;
+    font-weight: bold;
+    font-size: 110%;
+    text-decoration: none;
+}
+</style>
+
+<body style="font-family:'Courier New'; font-size:14px;">
+<p class="heading">
+Mplus VERSION 8.6<br />
+MUTHEN & MUTHEN<br />
+10/10/2021   9:57 PM<br />
+</p>
+
+<p class='heading'>OUTPUT SECTIONS</p>
+
+<ul>
+     <li><a href='#input'>Input Instructions</a></li>
+     <li><a href='#inputmessages'>Input Warnings And Errors</a></li>
+     <li><a href='#summary_analysis'>Summary Of Analysis</a></li>
+     <li><a href='#summary_data'>Summary Of Data</a></li>
+     <li><a href='#covariance_coverage'>Covariance Coverage Of Data</a></li>
+     <li><a href='#samplestats'>Sample Statistics</a></li>
+     <li><a href='#univariatess'>Univariate Sample Statistics</a></li>
+     <li><a href='#model_fit'>Model Fit Information</a></li>
+     <li><a href='#model_results'>Model Results</a></li>
+     <li><a href='#standardized_results'>Standardized Model Results</a></li>
+     <li><a href='#rsquare'>R-square</a></li>
+     <li><a href='#tech1_output'>Technical 1 Output</a></li>
+     <li><a href='#tech4_output'>Technical 4 Output</a></li>
+</ul>
+<pre>
+
+<a name='input' class='heading'>INPUT INSTRUCTIONS</a>
+
+  Title:
+    Fig. S10, Selection
+
+  Data:
+    File is TRAILS_extatt_final_11022021.dat ;
+  Variable:
+    Names are
+       idno g1ageyrc T5_ladder_4cat T6_ladder_4cat T4_ladder_4cat T3_ladder_4cat
+       T2_ladder_4cat g1sex p1ses p1ses3 g1wiscdq district_4cat_dummy1 district_4cat_dummy2
+       district_4cat_dummy3 ethni_bin c4arap c5arap c6arap T2_extnosubs T3_extnosubs
+       T4_extnosubs T5_extnosubs T6_extnosubs T2_attnoschool T3_attnoschool
+       T2_anxdepwith T3_anxdepwith T4_anxdepwith T5_anxdepwith T6_anxdepwith
+       T2_attCons T3_attCons T4_attCons T5_attCons T6_attCons T2_extCons
+       T3_extCons T4_extCons T5_extCons T6_extCons T2_anxdepwithCons T3_anxdepwithCons
+       T4_anxdepwithCons T5_anxdepwithCons T6_anxdepwithCons;
+    Missing are all (-9999) ;
+
+    Usevariables are T2_ladder_4cat T3_ladder_4cat T4_ladder_4cat
+    T5_ladder_4cat T6_ladder_4cat T2_extnosubs T3_extnosubs T4_extnosubs
+    T5_extnosubs;
+
+  grouping is g1sex (0=female 1=male);
+
+    auxiliary = (m)  g1ageyrc district_4cat_dummy1 district_4cat_dummy2
+       district_4cat_dummy3 ethni_bin p1ses g1wiscdq
+      T2_attnoschool T3_attnoschool c4arap c5arap c6arap
+      T6_extnosubs;
+
+  Define:
+  STANDARDIZE T2_extnosubs T3_extnosubs T4_extnosubs
+    T5_extnosubs;
+
+  Model:
+          alpha by T3_ladder_4cat@1 T4_ladder_4cat@1
+              T5_ladder_4cat@1 T6_ladder_4cat@1;
+
+                  T3_ladder_4cat on T2_ladder_4cat T2_extnosubs;
+                  T4_ladder_4cat on T3_ladder_4cat T3_extnosubs;
+                  T5_ladder_4cat on T4_ladder_4cat T4_extnosubs;
+                  T6_ladder_4cat on T5_ladder_4cat T5_extnosubs;
+
+          alpha with T2_ladder_4cat T2_extnosubs T3_extnosubs
+           T4_extnosubs T5_extnosubs;
+
+          T3_ladder_4cat with T4_extnosubs T5_extnosubs;
+          T4_ladder_4cat with T5_extnosubs;
+
+  Model female:
+  T3_ladder_4cat on T2_extnosubs (sel_23_F);
+  T4_ladder_4cat on T3_extnosubs (sel_34_F);
+  T5_ladder_4cat on T4_extnosubs (sel_45_F);
+  T6_ladder_4cat on T5_extnosubs (sel_56_F);
+
+  T3_ladder_4cat on T2_ladder_4cat (Auto_Edu_23_F);
+  T4_ladder_4cat on T3_ladder_4cat (Auto_Edu_34_F);
+  T5_ladder_4cat on T4_ladder_4cat (Auto_Edu_45_F);
+  T6_ladder_4cat on T5_ladder_4cat (Auto_Edu_56_F);
+
+  Model male:
+  T3_ladder_4cat on T2_extnosubs (sel_23_M);
+  T4_ladder_4cat on T3_extnosubs (sel_34_M);
+  T5_ladder_4cat on T4_extnosubs (sel_45_M);
+  T6_ladder_4cat on T5_extnosubs (sel_56_M);
+
+  T3_ladder_4cat on T2_ladder_4cat (Auto_Edu_23_M);
+  T4_ladder_4cat on T3_ladder_4cat (Auto_Edu_34_M);
+  T5_ladder_4cat on T4_ladder_4cat (Auto_Edu_45_M);
+  T6_ladder_4cat on T5_ladder_4cat (Auto_Edu_56_M);
+
+  Model test:
+  ! sel_23_F = sel_23_M;
+  ! sel_34_F = sel_34_M;
+  ! sel_45_F = sel_45_M;
+  ! sel_56_F = sel_56_M;
+
+  ! Auto_Edu_23_F = Auto_Edu_23_M;
+  ! Auto_Edu_34_F = Auto_Edu_34_M;
+  ! Auto_Edu_45_F = Auto_Edu_45_M;
+  ! Auto_Edu_56_F = Auto_Edu_56_M;
+
+  ANALYSIS:
+  Estimator = MLR;
+
+  OUTPUT:     TECH1 TECH4 SAMPSTAT STANDARDIZED (STDYX);
+
+
+<a name='inputmessages' class='heading'></a>
+
+*** WARNING in VARIABLE command
+  Note that only the first 8 characters of variable names are used in the output.
+  Shorten variable names to avoid any confusion.
+   1 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+Fig. S10, Selection
+
+<a name='summary_analysis' class='heading'>SUMMARY OF ANALYSIS</a>
+
+Number of groups                                                 2
+Number of observations
+   Group FEMALE                                               1131
+   Group MALE                                                 1098
+   Total sample size                                          2229
+
+Number of dependent variables                                    4
+Number of independent variables                                  5
+Number of continuous latent variables                            1
+
+Observed dependent variables
+
+  Continuous
+   T3_LADDER_  T4_LADDER_  T5_LADDER_  T6_LADDER_
+
+Observed independent variables
+   T2_LADDE    T2_EXTNO    T3_EXTNO    T4_EXTNO    T5_EXTNO
+
+Observed auxiliary variables
+   G1AGEYRC    DISTRICT_4  DISTRICT_4  DISTRICT_4  ETHNI_BIN   P1SES
+   G1WISCDQ    T2_ATTNOSC  T3_ATTNOSC  C4ARAP      C5ARAP      C6ARAP
+   T6_EXTNOSU
+
+Continuous latent variables
+   ALPHA
+
+Variables with special functions
+
+  Grouping variable     G1SEX
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  TRAILS_extatt_final_11022021.dat
+
+Input data format  FREE
+
+
+<a name='summary_data' class='heading'>SUMMARY OF DATA</a>
+
+   Group FEMALE
+     Number of missing data patterns           103
+
+   Group MALE
+     Number of missing data patterns            99
+
+
+<a name='covariance_coverage' class='heading'>COVARIANCE COVERAGE OF DATA</a>
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR FEMALE
+
+
+           Covariance Coverage
+              T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE      T2_LADDE
+              ________      ________      ________      ________      ________
+ T3_LADDE       0.729
+ T4_LADDE       0.639         0.739
+ T5_LADDE       0.620         0.692         0.712
+ T6_LADDE       0.561         0.622         0.626         0.635
+ T2_LADDE       0.710         0.690         0.671         0.601         0.905
+ T2_EXTNO       0.714         0.724         0.697         0.624         0.873
+ T3_EXTNO       0.701         0.659         0.637         0.579         0.758
+ T4_EXTNO       0.685         0.716         0.682         0.615         0.763
+ T5_EXTNO       0.637         0.692         0.696         0.623         0.698
+
+
+           Covariance Coverage
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________
+ T2_EXTNO       0.948
+ T3_EXTNO       0.767         0.781
+ T4_EXTNO       0.798         0.721         0.819
+ T5_EXTNO       0.732         0.659         0.712         0.745
+
+
+     PROPORTION OF DATA PRESENT FOR MALE
+
+
+           Covariance Coverage
+              T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE      T2_LADDE
+              ________      ________      ________      ________      ________
+ T3_LADDE       0.641
+ T4_LADDE       0.521         0.612
+ T5_LADDE       0.494         0.548         0.568
+ T6_LADDE       0.376         0.423         0.422         0.432
+ T2_LADDE       0.620         0.566         0.526         0.398         0.864
+ T2_EXTNO       0.635         0.600         0.561         0.424         0.824
+ T3_EXTNO       0.610         0.542         0.504         0.387         0.672
+ T4_EXTNO       0.555         0.587         0.537         0.422         0.643
+ T5_EXTNO       0.504         0.544         0.536         0.412         0.549
+
+
+           Covariance Coverage
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________
+ T2_EXTNO       0.928
+ T3_EXTNO       0.701         0.708
+ T4_EXTNO       0.684         0.600         0.698
+ T5_EXTNO       0.587         0.525         0.560         0.595
+
+
+<a name='samplestats' class='heading'>SAMPLE STATISTICS</a>
+
+
+     ESTIMATED SAMPLE STATISTICS FOR FEMALE
+
+
+           Means
+              T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE      T2_LADDE
+              ________      ________      ________      ________      ________
+                2.415         2.530         2.677         2.709         2.389
+
+
+           Means
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________
+                0.009         0.016         0.027         0.030
+
+
+           Covariances
+              T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE      T2_LADDE
+              ________      ________      ________      ________      ________
+ T3_LADDE       1.264
+ T4_LADDE       0.952         0.943
+ T5_LADDE       0.803         0.757         0.826
+ T6_LADDE       0.781         0.738         0.780         0.838
+ T2_LADDE       1.148         0.916         0.780         0.761         1.323
+ T2_EXTNO      -0.196        -0.151        -0.168        -0.175        -0.149
+ T3_EXTNO      -0.211        -0.167        -0.169        -0.177        -0.148
+ T4_EXTNO      -0.197        -0.152        -0.151        -0.162        -0.154
+ T5_EXTNO      -0.161        -0.130        -0.112        -0.120        -0.137
+
+
+           Covariances
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________
+ T2_EXTNO       1.007
+ T3_EXTNO       0.592         1.030
+ T4_EXTNO       0.439         0.559         1.015
+ T5_EXTNO       0.409         0.506         0.620         1.044
+
+
+           Correlations
+              T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE      T2_LADDE
+              ________      ________      ________      ________      ________
+ T3_LADDE       1.000
+ T4_LADDE       0.873         1.000
+ T5_LADDE       0.786         0.858         1.000
+ T6_LADDE       0.759         0.830         0.938         1.000
+ T2_LADDE       0.888         0.820         0.746         0.722         1.000
+ T2_EXTNO      -0.174        -0.154        -0.184        -0.190        -0.129
+ T3_EXTNO      -0.185        -0.169        -0.183        -0.191        -0.127
+ T4_EXTNO      -0.174        -0.156        -0.164        -0.176        -0.133
+ T5_EXTNO      -0.140        -0.131        -0.121        -0.128        -0.116
+
+
+           Correlations
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________
+ T2_EXTNO       1.000
+ T3_EXTNO       0.582         1.000
+ T4_EXTNO       0.434         0.547         1.000
+ T5_EXTNO       0.399         0.488         0.602         1.000
+
+
+     ESTIMATED SAMPLE STATISTICS FOR MALE
+
+
+           Means
+              T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE      T2_LADDE
+              ________      ________      ________      ________      ________
+                2.251         2.390         2.553         2.616         2.265
+
+
+           Means
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________
+                0.003         0.010         0.027         0.061
+
+
+           Covariances
+              T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE      T2_LADDE
+              ________      ________      ________      ________      ________
+ T3_LADDE       1.223
+ T4_LADDE       0.998         1.018
+ T5_LADDE       0.806         0.808         0.897
+ T6_LADDE       0.785         0.775         0.811         0.907
+ T2_LADDE       1.106         0.932         0.739         0.715         1.279
+ T2_EXTNO      -0.059        -0.061        -0.146        -0.141         0.000
+ T3_EXTNO      -0.112        -0.149        -0.201        -0.176        -0.074
+ T4_EXTNO      -0.063        -0.101        -0.148        -0.132        -0.040
+ T5_EXTNO      -0.061        -0.097        -0.120        -0.128        -0.069
+
+
+           Covariances
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________
+ T2_EXTNO       1.004
+ T3_EXTNO       0.538         1.017
+ T4_EXTNO       0.414         0.539         1.018
+ T5_EXTNO       0.298         0.509         0.654         1.057
+
+
+           Correlations
+              T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE      T2_LADDE
+              ________      ________      ________      ________      ________
+ T3_LADDE       1.000
+ T4_LADDE       0.895         1.000
+ T5_LADDE       0.769         0.845         1.000
+ T6_LADDE       0.745         0.806         0.899         1.000
+ T2_LADDE       0.885         0.817         0.690         0.663         1.000
+ T2_EXTNO      -0.053        -0.060        -0.154        -0.147         0.000
+ T3_EXTNO      -0.101        -0.147        -0.210        -0.183        -0.065
+ T4_EXTNO      -0.057        -0.099        -0.154        -0.137        -0.035
+ T5_EXTNO      -0.054        -0.094        -0.123        -0.131        -0.059
+
+
+           Correlations
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________
+ T2_EXTNO       1.000
+ T3_EXTNO       0.532         1.000
+ T4_EXTNO       0.410         0.530         1.000
+ T5_EXTNO       0.289         0.491         0.631         1.000
+
+
+     MAXIMUM LOG-LIKELIHOOD VALUE FOR THE UNRESTRICTED (H1) MODEL IS -30134.014
+
+
+<a name='univariatess' class='heading'>UNIVARIATE SAMPLE STATISTICS</a>
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS FOR FEMALE
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     T3_LADDER_4CAT        2.594      -0.068       1.000   21.45%       1.000      2.000      3.000
+             825.000       1.257      -1.373       4.000   29.33%       3.000      4.000
+     T4_LADDER_4CAT        2.712      -0.077       1.000    9.57%       2.000      2.000      3.000
+             836.000       0.894      -1.002       4.000   24.88%       3.000      4.000
+     T5_LADDER_4CAT        2.817      -0.305       1.000    8.20%       2.000      3.000      3.000
+             805.000       0.813      -0.724       4.000   24.97%       3.000      4.000
+     T6_LADDER_4CAT        2.922      -0.373       1.000    5.99%       2.000      3.000      3.000
+             718.000       0.777      -0.690       4.000   29.25%       3.000      4.000
+     T2_LADDER_4CAT        2.408       0.165       1.000   28.74%       1.000      2.000      2.000
+            1023.000       1.328      -1.411       4.000   25.61%       3.000      4.000
+     T2_EXTNOSUBS          0.000       0.923      -1.474    2.99%      -0.938     -0.439     -0.093
+            1072.000       1.000       0.787       4.222    0.09%       0.079      0.770
+     T3_EXTNOSUBS          0.000       0.949      -1.463    2.38%      -0.804     -0.475     -0.145
+             883.000       1.000       0.739       3.655    0.11%       0.019      0.843
+     T4_EXTNOSUBS          0.000       1.429      -1.092    8.32%      -0.798     -0.504     -0.211
+             926.000       1.000       2.295       5.075    0.11%      -0.064      0.670
+     T5_EXTNOSUBS          0.000       1.523      -1.081    9.02%      -0.912     -0.574     -0.236
+             843.000       1.000       3.383       6.530    0.12%      -0.066      0.779
+     G1AGEYRC             11.094       0.539      10.010    0.18%      10.640     10.860     11.010
+            1131.000       0.300      -0.376      12.560    0.09%      11.140     11.570
+     DISTRICT_4CAT_D       0.264       1.069       0.000   73.56%       0.000      0.000      0.000
+            1131.000       0.194      -0.858       1.000   26.44%       0.000      1.000
+     DISTRICT_4CAT_D       0.214       1.395       0.000   78.60%       0.000      0.000      0.000
+            1131.000       0.168      -0.054       1.000   21.40%       0.000      1.000
+     DISTRICT_4CAT_D       0.148       1.986       0.000   85.23%       0.000      0.000      0.000
+            1131.000       0.126       1.946       1.000   14.77%       0.000      0.000
+     ETHNI_BIN             0.131       2.189       0.000   86.91%       0.000      0.000      0.000
+            1131.000       0.114       2.792       1.000   13.09%       0.000      0.000
+     P1SES                -0.025      -0.067      -1.940    0.09%      -0.740     -0.230     -0.020
+            1114.000       0.613      -0.739       1.730    0.09%       0.200      0.700
+     G1WISCDQ             96.269      -0.071      45.000    0.09%      85.000     91.000     97.000
+            1128.000     218.744      -0.069     142.000    0.09%     100.000    109.000
+     T2_ATTNOSCHOOL        0.578       0.295       0.000    6.15%       0.250      0.500      0.625
+            1073.000       0.113      -0.229       1.750    0.19%       0.625      0.875
+     T3_ATTNOSCHOOL        0.616       0.367       0.000    4.31%       0.250      0.500      0.625
+             881.000       0.122      -0.173       1.875    0.11%       0.750      0.875
+     C4ARAP                0.455       0.856       0.000    4.38%       0.133      0.333      0.400
+             913.000       0.101       0.631       1.733    0.22%       0.467      0.733
+     C5ARAP                0.431       0.857       0.000    5.58%       0.133      0.267      0.333
+             843.000       0.104       0.301       1.667    0.12%       0.467      0.667
+     C6ARAP                0.439       1.012       0.000    5.79%       0.133      0.333      0.400
+             777.000       0.108       0.998       1.667    0.39%       0.467      0.667
+     T6_EXTNOSUBS          0.190       1.324       0.000   11.58%       0.030      0.091      0.152
+             777.000       0.030       2.340       1.121    0.26%       0.182      0.333
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS FOR MALE
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     T3_LADDER_4CAT        2.496       0.008       1.000   24.43%       1.000      2.000      2.000
+             704.000       1.224      -1.333       4.000   24.29%       3.000      4.000
+     T4_LADDER_4CAT        2.695      -0.144       1.000   12.05%       2.000      2.000      3.000
+             672.000       0.947      -1.008       4.000   24.70%       3.000      4.000
+     T5_LADDER_4CAT        2.785      -0.414       1.000   11.22%       2.000      3.000      3.000
+             624.000       0.855      -0.635       4.000   23.08%       3.000      4.000
+     T6_LADDER_4CAT        2.956      -0.545       1.000    7.38%       2.000      3.000      3.000
+             474.000       0.789      -0.431       4.000   29.96%       3.000      4.000
+     T2_LADDER_4CAT        2.258       0.297       1.000   35.93%       1.000      2.000      2.000
+             949.000       1.321      -1.364       4.000   20.55%       3.000      4.000
+     T2_EXTNOSUBS          0.000       1.112      -1.479    2.06%      -0.835     -0.514     -0.192
+            1019.000       1.000       1.835       4.959    0.10%       0.130      0.774
+     T3_EXTNOSUBS          0.000       0.900      -1.551    1.03%      -0.918     -0.442     -0.125
+             777.000       1.000       0.716       3.994    0.26%       0.033      0.825
+     T4_EXTNOSUBS          0.000       1.569      -1.049    9.79%      -0.769     -0.490     -0.350
+             766.000       1.000       3.218       5.518    0.13%      -0.071      0.768
+     T5_EXTNOSUBS          0.000       1.648      -1.048   11.03%      -0.885     -0.395     -0.231
+             653.000       1.000       3.567       5.484    0.15%      -0.068      0.585
+     G1AGEYRC             11.128       0.430      10.010    0.09%      10.640     10.910     11.035
+            1098.000       0.318      -0.549      12.580    0.09%      11.210     11.650
+     DISTRICT_4CAT_D       0.270       1.033       0.000   72.95%       0.000      0.000      0.000
+            1098.000       0.197      -0.932       1.000   27.05%       0.000      1.000
+     DISTRICT_4CAT_D       0.225       1.317       0.000   77.50%       0.000      0.000      0.000
+            1098.000       0.174      -0.264       1.000   22.50%       0.000      1.000
+     DISTRICT_4CAT_D       0.167       1.789       0.000   83.33%       0.000      0.000      0.000
+            1098.000       0.139       1.200       1.000   16.67%       0.000      0.000
+     ETHNI_BIN             0.139       2.083       0.000   86.07%       0.000      0.000      0.000
+            1098.000       0.120       2.338       1.000   13.93%       0.000      0.000
+     P1SES                -0.073      -0.030      -1.850    0.09%      -0.830     -0.280     -0.090
+            1073.000       0.670      -0.870       1.730    0.09%       0.160      0.710
+     G1WISCDQ             98.137      -0.055      45.000    0.27%      85.000     94.000     97.000
+            1092.000     229.470       0.298     149.000    0.09%     103.000    112.000
+     T2_ATTNOSCHOOL        0.546       0.434       0.000    6.48%       0.250      0.375      0.500
+            1019.000       0.113      -0.284       1.625    0.10%       0.625      0.875
+     T3_ATTNOSCHOOL        0.569       0.419       0.000    5.03%       0.250      0.500      0.500
+             775.000       0.115      -0.296       1.750    0.13%       0.625      0.875
+     C4ARAP                0.444       0.778       0.000    5.50%       0.133      0.267      0.400
+             746.000       0.105       0.045       1.533    0.13%       0.467      0.733
+     C5ARAP                0.426       0.870       0.000    6.57%       0.133      0.267      0.333
+             654.000       0.104       0.283       1.600    0.15%       0.467      0.667
+     C6ARAP                0.455       0.948       0.000    7.81%       0.133      0.267      0.400
+             538.000       0.125       0.611       1.733    0.19%       0.467      0.733
+     T6_EXTNOSUBS          0.205       1.701       0.000    9.85%       0.061      0.121      0.152
+             538.000       0.042       3.154       1.152    0.19%       0.182      0.333
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+<a name='model_fit' class='heading'>MODEL FIT INFORMATION</a>
+
+Number of Free Parameters                       87
+
+Loglikelihood Including the Auxiliary Part
+
+          H0 Value                      -30164.467
+          H0 Scaling Correction Factor      1.0962
+            for MLR
+          H1 Value                      -30134.014
+          H1 Scaling Correction Factor      1.0961
+            for MLR
+
+Information Criteria Including the Auxiliary Part
+
+          Number of Free Parameters            529
+          Akaike (AIC)                   61386.935
+          Bayesian (BIC)                 64407.159
+          Sample-Size Adjusted BIC       62726.443
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                             55.662*
+          Degrees of Freedom                    21
+          P-Value                           0.0001
+          Scaling Correction Factor         1.0942
+            for MLR
+
+Chi-Square Contribution From Each Group
+
+          FEMALE                            31.253
+          MALE                              24.409
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.038
+          90 Percent C.I.                    0.026  0.051
+          Probability RMSEA <= .05           0.935
+
+CFI/TLI
+
+          CFI                                0.996
+          TLI                                0.987
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           9329.042
+          Degrees of Freedom                    72
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.016
+
+
+
+<a name='model_results' class='heading'>MODEL RESULTS</a>
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Group FEMALE
+
+ ALPHA    BY
+    T3_LADDER_         1.000      0.000    999.000    999.000
+    T4_LADDER_         1.000      0.000    999.000    999.000
+    T5_LADDER_         1.000      0.000    999.000    999.000
+    T6_LADDER_         1.000      0.000    999.000    999.000
+
+ T3_LADDE ON
+    T2_LADDER_         0.682      0.034     19.918      0.000
+    T2_EXTNOSU        -0.032      0.024     -1.306      0.192
+
+ T4_LADDE ON
+    T3_LADDER_         0.576      0.036     16.081      0.000
+    T3_EXTNOSU         0.023      0.020      1.161      0.246
+
+ T5_LADDE ON
+    T4_LADDER_         0.562      0.040     13.952      0.000
+    T4_EXTNOSU        -0.008      0.021     -0.391      0.695
+
+ T6_LADDE ON
+    T5_LADDER_         0.681      0.046     14.779      0.000
+    T5_EXTNOSU        -0.006      0.020     -0.306      0.760
+
+ ALPHA    WITH
+    T2_LADDER_         0.244      0.041      5.986      0.000
+    T2_EXTNOSU        -0.061      0.017     -3.530      0.000
+    T3_EXTNOSU        -0.069      0.019     -3.743      0.000
+    T4_EXTNOSU        -0.057      0.019     -3.007      0.003
+    T5_EXTNOSU        -0.038      0.021     -1.841      0.066
+
+ T3_LADDE WITH
+    T4_EXTNOSU        -0.012      0.015     -0.800      0.424
+    T5_EXTNOSU        -0.009      0.019     -0.473      0.636
+
+ T4_LADDE WITH
+    T5_EXTNOSU        -0.015      0.020     -0.747      0.455
+
+ T2_EXTNO WITH
+    T2_LADDER_        -0.150      0.035     -4.272      0.000
+
+ T3_EXTNO WITH
+    T2_LADDER_        -0.149      0.037     -4.012      0.000
+    T2_EXTNOSU         0.592      0.041     14.288      0.000
+
+ T4_EXTNO WITH
+    T2_LADDER_        -0.155      0.038     -4.116      0.000
+    T2_EXTNOSU         0.439      0.040     11.000      0.000
+    T3_EXTNOSU         0.558      0.043     12.997      0.000
+
+ T5_EXTNO WITH
+    T2_LADDER_        -0.136      0.038     -3.610      0.000
+    T2_EXTNOSU         0.410      0.045      9.055      0.000
+    T3_EXTNOSU         0.506      0.051     10.005      0.000
+    T4_EXTNOSU         0.620      0.055     11.368      0.000
+
+ Means
+    T2_LADDER_         2.389      0.035     68.645      0.000
+    T2_EXTNOSU         0.009      0.031      0.305      0.760
+    T3_EXTNOSU         0.017      0.034      0.492      0.623
+    T4_EXTNOSU         0.027      0.034      0.795      0.427
+    T5_EXTNOSU         0.031      0.035      0.872      0.383
+    ALPHA              0.000      0.000    999.000    999.000
+
+ Intercepts
+    T3_LADDER_         0.783      0.084      9.273      0.000
+    T4_LADDER_         1.134      0.089     12.783      0.000
+    T5_LADDER_         1.260      0.104     12.114      0.000
+    T6_LADDER_         0.888      0.124      7.162      0.000
+
+ Variances
+    T2_LADDER_         1.322      0.032     41.155      0.000
+    T2_EXTNOSU         1.007      0.052     19.478      0.000
+    T3_EXTNOSU         1.030      0.058     17.852      0.000
+    T4_EXTNOSU         1.014      0.068     14.868      0.000
+    T5_EXTNOSU         1.044      0.083     12.596      0.000
+    ALPHA              0.081      0.023      3.485      0.000
+
+ Residual Variances
+    T3_LADDER_         0.234      0.016     14.233      0.000
+    T4_LADDER_         0.184      0.018     10.300      0.000
+    T5_LADDER_         0.182      0.015     12.021      0.000
+    T6_LADDER_         0.078      0.011      6.809      0.000
+
+Group MALE
+
+ ALPHA    BY
+    T3_LADDER_         1.000      0.000    999.000    999.000
+    T4_LADDER_         1.000      0.000    999.000    999.000
+    T5_LADDER_         1.000      0.000    999.000    999.000
+    T6_LADDER_         1.000      0.000    999.000    999.000
+
+ T3_LADDE ON
+    T2_LADDER_         0.700      0.047     15.035      0.000
+    T2_EXTNOSU        -0.011      0.025     -0.428      0.669
+
+ T4_LADDE ON
+    T3_LADDER_         0.618      0.050     12.258      0.000
+    T3_EXTNOSU        -0.016      0.023     -0.674      0.500
+
+ T5_LADDE ON
+    T4_LADDER_         0.588      0.055     10.651      0.000
+    T4_EXTNOSU        -0.046      0.032     -1.432      0.152
+
+ T6_LADDE ON
+    T5_LADDER_         0.715      0.057     12.527      0.000
+    T5_EXTNOSU        -0.001      0.025     -0.038      0.970
+
+ ALPHA    WITH
+    T2_LADDER_         0.213      0.054      3.912      0.000
+    T2_EXTNOSU        -0.045      0.018     -2.530      0.011
+    T3_EXTNOSU        -0.060      0.020     -3.017      0.003
+    T4_EXTNOSU        -0.042      0.022     -1.930      0.054
+    T5_EXTNOSU        -0.045      0.025     -1.794      0.073
+
+ T3_LADDE WITH
+    T4_EXTNOSU         0.007      0.024      0.312      0.755
+    T5_EXTNOSU         0.032      0.026      1.202      0.229
+
+ T4_LADDE WITH
+    T5_EXTNOSU         0.003      0.019      0.154      0.877
+
+ T2_EXTNO WITH
+    T2_LADDER_         0.000      0.036      0.003      0.998
+
+ T3_EXTNO WITH
+    T2_LADDER_        -0.075      0.039     -1.927      0.054
+    T2_EXTNOSU         0.539      0.048     11.236      0.000
+
+ T4_EXTNO WITH
+    T2_LADDER_        -0.040      0.043     -0.925      0.355
+    T2_EXTNOSU         0.414      0.051      8.147      0.000
+    T3_EXTNOSU         0.540      0.055      9.896      0.000
+
+ T5_EXTNO WITH
+    T2_LADDER_        -0.071      0.046     -1.524      0.127
+    T2_EXTNOSU         0.297      0.044      6.691      0.000
+    T3_EXTNOSU         0.509      0.057      8.952      0.000
+    T4_EXTNOSU         0.654      0.074      8.789      0.000
+
+ Means
+    T2_LADDER_         2.264      0.035     64.393      0.000
+    T2_EXTNOSU         0.003      0.032      0.082      0.935
+    T3_EXTNOSU         0.010      0.036      0.290      0.772
+    T4_EXTNOSU         0.027      0.038      0.699      0.485
+    T5_EXTNOSU         0.062      0.043      1.447      0.148
+    ALPHA             -0.118      0.122     -0.963      0.335
+
+ Intercepts
+    T3_LADDER_         0.783      0.084      9.273      0.000
+    T4_LADDER_         1.134      0.089     12.783      0.000
+    T5_LADDER_         1.260      0.104     12.114      0.000
+    T6_LADDER_         0.888      0.124      7.162      0.000
+
+ Variances
+    T2_LADDER_         1.279      0.033     39.073      0.000
+    T2_EXTNOSU         1.004      0.062     16.197      0.000
+    T3_EXTNOSU         1.019      0.059     17.191      0.000
+    T4_EXTNOSU         1.018      0.083     12.297      0.000
+    T5_EXTNOSU         1.058      0.097     10.914      0.000
+    ALPHA              0.070      0.032      2.229      0.026
+
+ Residual Variances
+    T3_LADDER_         0.226      0.021     10.686      0.000
+    T4_LADDER_         0.171      0.017     10.157      0.000
+    T5_LADDER_         0.227      0.020     11.198      0.000
+    T6_LADDER_         0.146      0.019      7.837      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.144E-08
+       (ratio of smallest to largest eigenvalue)
+
+
+<a name='standardized_results' class='heading'>STANDARDIZED MODEL RESULTS</a>
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Group FEMALE
+
+ ALPHA    BY
+    T3_LADDER_         0.252      0.036      6.983      0.000
+    T4_LADDER_         0.289      0.042      6.889      0.000
+    T5_LADDER_         0.314      0.046      6.896      0.000
+    T6_LADDER_         0.314      0.045      6.998      0.000
+
+ T3_LADDE ON
+    T2_LADDER_         0.695      0.035     20.132      0.000
+    T2_EXTNOSU        -0.028      0.021     -1.307      0.191
+
+ T4_LADDE ON
+    T3_LADDER_         0.661      0.039     17.113      0.000
+    T3_EXTNOSU         0.023      0.020      1.159      0.246
+
+ T5_LADDE ON
+    T4_LADDER_         0.610      0.043     14.270      0.000
+    T4_EXTNOSU        -0.009      0.023     -0.392      0.695
+
+ T6_LADDE ON
+    T5_LADDER_         0.680      0.047     14.465      0.000
+    T5_EXTNOSU        -0.007      0.022     -0.306      0.760
+
+ ALPHA    WITH
+    T2_LADDER_         0.746      0.032     23.397      0.000
+    T2_EXTNOSU        -0.213      0.049     -4.358      0.000
+    T3_EXTNOSU        -0.240      0.050     -4.765      0.000
+    T4_EXTNOSU        -0.198      0.054     -3.657      0.000
+    T5_EXTNOSU        -0.132      0.065     -2.025      0.043
+
+ T3_LADDE WITH
+    T4_EXTNOSU        -0.025      0.031     -0.801      0.423
+    T5_EXTNOSU        -0.019      0.039     -0.472      0.637
+
+ T4_LADDE WITH
+    T5_EXTNOSU        -0.033      0.044     -0.757      0.449
+
+ T2_EXTNO WITH
+    T2_LADDER_        -0.130      0.029     -4.418      0.000
+
+ T3_EXTNO WITH
+    T2_LADDER_        -0.128      0.031     -4.130      0.000
+    T2_EXTNOSU         0.581      0.025     23.352      0.000
+
+ T4_EXTNO WITH
+    T2_LADDER_        -0.134      0.031     -4.344      0.000
+    T2_EXTNOSU         0.434      0.030     14.334      0.000
+    T3_EXTNOSU         0.546      0.030     18.377      0.000
+
+ T5_EXTNO WITH
+    T2_LADDER_        -0.116      0.031     -3.687      0.000
+    T2_EXTNOSU         0.400      0.032     12.557      0.000
+    T3_EXTNOSU         0.488      0.032     15.265      0.000
+    T4_EXTNOSU         0.602      0.031     19.324      0.000
+
+ Means
+    T2_LADDER_         2.077      0.036     57.970      0.000
+    T2_EXTNOSU         0.009      0.030      0.307      0.759
+    T3_EXTNOSU         0.016      0.033      0.496      0.620
+    T4_EXTNOSU         0.026      0.033      0.810      0.418
+    T5_EXTNOSU         0.030      0.034      0.891      0.373
+    ALPHA              0.000      0.000    999.000    999.000
+
+ Intercepts
+    T3_LADDER_         0.693      0.077      8.995      0.000
+    T4_LADDER_         1.152      0.098     11.721      0.000
+    T5_LADDER_         1.391      0.126     11.055      0.000
+    T6_LADDER_         0.979      0.140      6.972      0.000
+
+ Variances
+    T2_LADDER_         1.000      0.000    999.000    999.000
+    T2_EXTNOSU         1.000      0.000    999.000    999.000
+    T3_EXTNOSU         1.000      0.000    999.000    999.000
+    T4_EXTNOSU         1.000      0.000    999.000    999.000
+    T5_EXTNOSU         1.000      0.000    999.000    999.000
+    ALPHA              1.000      0.000    999.000    999.000
+
+ Residual Variances
+    T3_LADDER_         0.184      0.014     13.555      0.000
+    T4_LADDER_         0.190      0.018     10.465      0.000
+    T5_LADDER_         0.221      0.019     11.463      0.000
+    T6_LADDER_         0.095      0.015      6.441      0.000
+
+Group MALE
+
+ ALPHA    BY
+    T3_LADDER_         0.240      0.054      4.412      0.000
+    T4_LADDER_         0.267      0.060      4.437      0.000
+    T5_LADDER_         0.281      0.062      4.530      0.000
+    T6_LADDER_         0.272      0.059      4.614      0.000
+
+ T3_LADDE ON
+    T2_LADDER_         0.716      0.046     15.602      0.000
+    T2_EXTNOSU        -0.010      0.022     -0.428      0.668
+
+ T4_LADDE ON
+    T3_LADDER_         0.689      0.056     12.290      0.000
+    T3_EXTNOSU        -0.016      0.024     -0.674      0.500
+
+ T5_LADDE ON
+    T4_LADDER_         0.618      0.060     10.232      0.000
+    T4_EXTNOSU        -0.049      0.034     -1.438      0.150
+
+ T6_LADDE ON
+    T5_LADDER_         0.693      0.057     12.056      0.000
+    T5_EXTNOSU        -0.001      0.027     -0.038      0.970
+
+ ALPHA    WITH
+    T2_LADDER_         0.709      0.044     16.219      0.000
+    T2_EXTNOSU        -0.171      0.066     -2.579      0.010
+    T3_EXTNOSU        -0.225      0.068     -3.292      0.001
+    T4_EXTNOSU        -0.157      0.078     -2.011      0.044
+    T5_EXTNOSU        -0.165      0.094     -1.756      0.079
+
+ T3_LADDE WITH
+    T4_EXTNOSU         0.016      0.050      0.313      0.754
+    T5_EXTNOSU         0.065      0.053      1.214      0.225
+
+ T4_LADDE WITH
+    T5_EXTNOSU         0.007      0.045      0.154      0.877
+
+ T2_EXTNO WITH
+    T2_LADDER_         0.000      0.031      0.003      0.998
+
+ T3_EXTNO WITH
+    T2_LADDER_        -0.065      0.034     -1.949      0.051
+    T2_EXTNOSU         0.533      0.032     16.728      0.000
+
+ T4_EXTNO WITH
+    T2_LADDER_        -0.035      0.037     -0.933      0.351
+    T2_EXTNOSU         0.409      0.037     11.012      0.000
+    T3_EXTNOSU         0.530      0.036     14.625      0.000
+
+ T5_EXTNO WITH
+    T2_LADDER_        -0.061      0.039     -1.545      0.122
+    T2_EXTNOSU         0.289      0.039      7.452      0.000
+    T3_EXTNOSU         0.491      0.040     12.287      0.000
+    T4_EXTNOSU         0.631      0.038     16.431      0.000
+
+ Means
+    T2_LADDER_         2.002      0.033     60.237      0.000
+    T2_EXTNOSU         0.003      0.031      0.082      0.935
+    T3_EXTNOSU         0.010      0.036      0.291      0.771
+    T4_EXTNOSU         0.026      0.037      0.713      0.476
+    T5_EXTNOSU         0.060      0.040      1.518      0.129
+    ALPHA             -0.445      0.534     -0.833      0.405
+
+ Intercepts
+    T3_LADDER_         0.708      0.077      9.140      0.000
+    T4_LADDER_         1.144      0.092     12.466      0.000
+    T5_LADDER_         1.335      0.114     11.666      0.000
+    T6_LADDER_         0.912      0.132      6.923      0.000
+
+ Variances
+    T2_LADDER_         1.000      0.000    999.000    999.000
+    T2_EXTNOSU         1.000      0.000    999.000    999.000
+    T3_EXTNOSU         1.000      0.000    999.000    999.000
+    T4_EXTNOSU         1.000      0.000    999.000    999.000
+    T5_EXTNOSU         1.000      0.000    999.000    999.000
+    ALPHA              1.000      0.000    999.000    999.000
+
+ Residual Variances
+    T3_LADDER_         0.185      0.018     10.558      0.000
+    T4_LADDER_         0.174      0.018      9.870      0.000
+    T5_LADDER_         0.255      0.023     11.043      0.000
+    T6_LADDER_         0.154      0.021      7.393      0.000
+
+
+<a name='rsquare' class='heading'>R-SQUARE</a>
+
+Group FEMALE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    T3_LADDE           0.816      0.014     60.190      0.000
+    T4_LADDE           0.810      0.018     44.493      0.000
+    T5_LADDE           0.779      0.019     40.311      0.000
+    T6_LADDE           0.905      0.015     61.486      0.000
+
+Group MALE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    T3_LADDE           0.815      0.018     46.424      0.000
+    T4_LADDE           0.826      0.018     46.995      0.000
+    T5_LADDE           0.745      0.023     32.317      0.000
+    T6_LADDE           0.846      0.021     40.708      0.000
+
+
+<a name='tech1_output' class='heading'>TECHNICAL 1 OUTPUT</a>
+
+
+     PARAMETER SPECIFICATION FOR FEMALE
+
+
+           NU
+              T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE      T2_LADDE
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           NU
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________
+                  0             0             0             0
+
+
+           LAMBDA
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T3_LADDE           0             0             0             0             0
+ T4_LADDE           0             0             0             0             0
+ T5_LADDE           0             0             0             0             0
+ T6_LADDE           0             0             0             0             0
+ T2_LADDE           0             0             0             0             0
+ T2_EXTNO           0             0             0             0             0
+ T3_EXTNO           0             0             0             0             0
+ T4_EXTNO           0             0             0             0             0
+ T5_EXTNO           0             0             0             0             0
+
+
+           LAMBDA
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T3_LADDE           0             0             0             0             0
+ T4_LADDE           0             0             0             0             0
+ T5_LADDE           0             0             0             0             0
+ T6_LADDE           0             0             0             0             0
+ T2_LADDE           0             0             0             0             0
+ T2_EXTNO           0             0             0             0             0
+ T3_EXTNO           0             0             0             0             0
+ T4_EXTNO           0             0             0             0             0
+ T5_EXTNO           0             0             0             0             0
+
+
+           THETA
+              T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE      T2_LADDE
+              ________      ________      ________      ________      ________
+ T3_LADDE           0
+ T4_LADDE           0             0
+ T5_LADDE           0             0             0
+ T6_LADDE           0             0             0             0
+ T2_LADDE           0             0             0             0             0
+ T2_EXTNO           0             0             0             0             0
+ T3_EXTNO           0             0             0             0             0
+ T4_EXTNO           0             0             0             0             0
+ T5_EXTNO           0             0             0             0             0
+
+
+           THETA
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________
+ T2_EXTNO           0
+ T3_EXTNO           0             0
+ T4_EXTNO           0             0             0
+ T5_EXTNO           0             0             0             0
+
+
+           ALPHA
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+                  0             1             2             3             4
+
+
+           ALPHA
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+                  5             6             7             8             9
+
+
+           BETA
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA              0             0             0             0             0
+ T3_LADDE           0             0             0             0             0
+ T4_LADDE           0            12             0             0             0
+ T5_LADDE           0             0            14             0             0
+ T6_LADDE           0             0             0            16             0
+ T2_LADDE           0             0             0             0             0
+ T2_EXTNO           0             0             0             0             0
+ T3_EXTNO           0             0             0             0             0
+ T4_EXTNO           0             0             0             0             0
+ T5_EXTNO           0             0             0             0             0
+
+
+           BETA
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ ALPHA              0             0             0             0             0
+ T3_LADDE          10            11             0             0             0
+ T4_LADDE           0             0            13             0             0
+ T5_LADDE           0             0             0            15             0
+ T6_LADDE           0             0             0             0            17
+ T2_LADDE           0             0             0             0             0
+ T2_EXTNO           0             0             0             0             0
+ T3_EXTNO           0             0             0             0             0
+ T4_EXTNO           0             0             0             0             0
+ T5_EXTNO           0             0             0             0             0
+
+
+           PSI
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA             18
+ T3_LADDE           0            19
+ T4_LADDE           0             0            20
+ T5_LADDE           0             0             0            21
+ T6_LADDE           0             0             0             0            22
+ T2_LADDE          23             0             0             0             0
+ T2_EXTNO          25             0             0             0             0
+ T3_EXTNO          28             0             0             0             0
+ T4_EXTNO          32            33             0             0             0
+ T5_EXTNO          38            39            40             0             0
+
+
+           PSI
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE          24
+ T2_EXTNO          26            27
+ T3_EXTNO          29            30            31
+ T4_EXTNO          34            35            36            37
+ T5_EXTNO          41            42            43            44            45
+
+
+     PARAMETER SPECIFICATION FOR MALE
+
+
+           NU
+              T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE      T2_LADDE
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           NU
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________
+                  0             0             0             0
+
+
+           LAMBDA
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T3_LADDE           0             0             0             0             0
+ T4_LADDE           0             0             0             0             0
+ T5_LADDE           0             0             0             0             0
+ T6_LADDE           0             0             0             0             0
+ T2_LADDE           0             0             0             0             0
+ T2_EXTNO           0             0             0             0             0
+ T3_EXTNO           0             0             0             0             0
+ T4_EXTNO           0             0             0             0             0
+ T5_EXTNO           0             0             0             0             0
+
+
+           LAMBDA
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T3_LADDE           0             0             0             0             0
+ T4_LADDE           0             0             0             0             0
+ T5_LADDE           0             0             0             0             0
+ T6_LADDE           0             0             0             0             0
+ T2_LADDE           0             0             0             0             0
+ T2_EXTNO           0             0             0             0             0
+ T3_EXTNO           0             0             0             0             0
+ T4_EXTNO           0             0             0             0             0
+ T5_EXTNO           0             0             0             0             0
+
+
+           THETA
+              T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE      T2_LADDE
+              ________      ________      ________      ________      ________
+ T3_LADDE           0
+ T4_LADDE           0             0
+ T5_LADDE           0             0             0
+ T6_LADDE           0             0             0             0
+ T2_LADDE           0             0             0             0             0
+ T2_EXTNO           0             0             0             0             0
+ T3_EXTNO           0             0             0             0             0
+ T4_EXTNO           0             0             0             0             0
+ T5_EXTNO           0             0             0             0             0
+
+
+           THETA
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________
+ T2_EXTNO           0
+ T3_EXTNO           0             0
+ T4_EXTNO           0             0             0
+ T5_EXTNO           0             0             0             0
+
+
+           ALPHA
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+                 46             1             2             3             4
+
+
+           ALPHA
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+                 47            48            49            50            51
+
+
+           BETA
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA              0             0             0             0             0
+ T3_LADDE           0             0             0             0             0
+ T4_LADDE           0            54             0             0             0
+ T5_LADDE           0             0            56             0             0
+ T6_LADDE           0             0             0            58             0
+ T2_LADDE           0             0             0             0             0
+ T2_EXTNO           0             0             0             0             0
+ T3_EXTNO           0             0             0             0             0
+ T4_EXTNO           0             0             0             0             0
+ T5_EXTNO           0             0             0             0             0
+
+
+           BETA
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ ALPHA              0             0             0             0             0
+ T3_LADDE          52            53             0             0             0
+ T4_LADDE           0             0            55             0             0
+ T5_LADDE           0             0             0            57             0
+ T6_LADDE           0             0             0             0            59
+ T2_LADDE           0             0             0             0             0
+ T2_EXTNO           0             0             0             0             0
+ T3_EXTNO           0             0             0             0             0
+ T4_EXTNO           0             0             0             0             0
+ T5_EXTNO           0             0             0             0             0
+
+
+           PSI
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA             60
+ T3_LADDE           0            61
+ T4_LADDE           0             0            62
+ T5_LADDE           0             0             0            63
+ T6_LADDE           0             0             0             0            64
+ T2_LADDE          65             0             0             0             0
+ T2_EXTNO          67             0             0             0             0
+ T3_EXTNO          70             0             0             0             0
+ T4_EXTNO          74            75             0             0             0
+ T5_EXTNO          80            81            82             0             0
+
+
+           PSI
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE          66
+ T2_EXTNO          68            69
+ T3_EXTNO          71            72            73
+ T4_EXTNO          76            77            78            79
+ T5_EXTNO          83            84            85            86            87
+
+
+     STARTING VALUES FOR FEMALE
+
+
+           NU
+              T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE      T2_LADDE
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T3_LADDE       0.000         1.000         0.000         0.000         0.000
+ T4_LADDE       0.000         0.000         1.000         0.000         0.000
+ T5_LADDE       0.000         0.000         0.000         1.000         0.000
+ T6_LADDE       0.000         0.000         0.000         0.000         1.000
+ T2_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T3_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T3_LADDE       0.000         0.000         0.000         0.000         0.000
+ T4_LADDE       0.000         0.000         0.000         0.000         0.000
+ T5_LADDE       0.000         0.000         0.000         0.000         0.000
+ T6_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_LADDE       1.000         0.000         0.000         0.000         0.000
+ T2_EXTNO       0.000         1.000         0.000         0.000         0.000
+ T3_EXTNO       0.000         0.000         1.000         0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000         1.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000         1.000
+
+
+           THETA
+              T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE      T2_LADDE
+              ________      ________      ________      ________      ________
+ T3_LADDE       0.000
+ T4_LADDE       0.000         0.000
+ T5_LADDE       0.000         0.000         0.000
+ T6_LADDE       0.000         0.000         0.000         0.000
+ T2_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T3_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________
+ T2_EXTNO       0.000
+ T3_EXTNO       0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000
+
+
+           ALPHA
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+                0.000         0.783         1.134         1.260         0.888
+
+
+           ALPHA
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+                2.389         0.009         0.017         0.027         0.031
+
+
+           BETA
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA          0.000         0.000         0.000         0.000         0.000
+ T3_LADDE       1.000         0.000         0.000         0.000         0.000
+ T4_LADDE       1.000         0.576         0.000         0.000         0.000
+ T5_LADDE       1.000         0.000         0.562         0.000         0.000
+ T6_LADDE       1.000         0.000         0.000         0.681         0.000
+ T2_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T3_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ ALPHA          0.000         0.000         0.000         0.000         0.000
+ T3_LADDE       0.682        -0.032         0.000         0.000         0.000
+ T4_LADDE       0.000         0.000         0.023         0.000         0.000
+ T5_LADDE       0.000         0.000         0.000        -0.008         0.000
+ T6_LADDE       0.000         0.000         0.000         0.000        -0.006
+ T2_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T3_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA          0.081
+ T3_LADDE       0.000         0.234
+ T4_LADDE       0.000         0.000         0.184
+ T5_LADDE       0.000         0.000         0.000         0.182
+ T6_LADDE       0.000         0.000         0.000         0.000         0.078
+ T2_LADDE       0.244         0.000         0.000         0.000         0.000
+ T2_EXTNO      -0.061         0.000         0.000         0.000         0.000
+ T3_EXTNO      -0.069         0.000         0.000         0.000         0.000
+ T4_EXTNO      -0.057        -0.012         0.000         0.000         0.000
+ T5_EXTNO      -0.038        -0.009        -0.015         0.000         0.000
+
+
+           PSI
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE       1.322
+ T2_EXTNO      -0.150         1.007
+ T3_EXTNO      -0.149         0.592         1.030
+ T4_EXTNO      -0.155         0.439         0.558         1.014
+ T5_EXTNO      -0.136         0.410         0.506         0.620         1.044
+
+
+     STARTING VALUES FOR MALE
+
+
+           NU
+              T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE      T2_LADDE
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________
+                0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T3_LADDE       0.000         1.000         0.000         0.000         0.000
+ T4_LADDE       0.000         0.000         1.000         0.000         0.000
+ T5_LADDE       0.000         0.000         0.000         1.000         0.000
+ T6_LADDE       0.000         0.000         0.000         0.000         1.000
+ T2_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T3_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T3_LADDE       0.000         0.000         0.000         0.000         0.000
+ T4_LADDE       0.000         0.000         0.000         0.000         0.000
+ T5_LADDE       0.000         0.000         0.000         0.000         0.000
+ T6_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_LADDE       1.000         0.000         0.000         0.000         0.000
+ T2_EXTNO       0.000         1.000         0.000         0.000         0.000
+ T3_EXTNO       0.000         0.000         1.000         0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000         1.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000         1.000
+
+
+           THETA
+              T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE      T2_LADDE
+              ________      ________      ________      ________      ________
+ T3_LADDE       0.000
+ T4_LADDE       0.000         0.000
+ T5_LADDE       0.000         0.000         0.000
+ T6_LADDE       0.000         0.000         0.000         0.000
+ T2_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T3_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________
+ T2_EXTNO       0.000
+ T3_EXTNO       0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000
+
+
+           ALPHA
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+               -0.118         0.783         1.134         1.260         0.888
+
+
+           ALPHA
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+                2.264         0.003         0.010         0.027         0.062
+
+
+           BETA
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA          0.000         0.000         0.000         0.000         0.000
+ T3_LADDE       1.000         0.000         0.000         0.000         0.000
+ T4_LADDE       1.000         0.618         0.000         0.000         0.000
+ T5_LADDE       1.000         0.000         0.588         0.000         0.000
+ T6_LADDE       1.000         0.000         0.000         0.715         0.000
+ T2_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T3_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ ALPHA          0.000         0.000         0.000         0.000         0.000
+ T3_LADDE       0.700        -0.011         0.000         0.000         0.000
+ T4_LADDE       0.000         0.000        -0.016         0.000         0.000
+ T5_LADDE       0.000         0.000         0.000        -0.046         0.000
+ T6_LADDE       0.000         0.000         0.000         0.000        -0.001
+ T2_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T3_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA          0.070
+ T3_LADDE       0.000         0.226
+ T4_LADDE       0.000         0.000         0.171
+ T5_LADDE       0.000         0.000         0.000         0.227
+ T6_LADDE       0.000         0.000         0.000         0.000         0.146
+ T2_LADDE       0.213         0.000         0.000         0.000         0.000
+ T2_EXTNO      -0.045         0.000         0.000         0.000         0.000
+ T3_EXTNO      -0.060         0.000         0.000         0.000         0.000
+ T4_EXTNO      -0.042         0.007         0.000         0.000         0.000
+ T5_EXTNO      -0.045         0.032         0.003         0.000         0.000
+
+
+           PSI
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE       1.279
+ T2_EXTNO       0.000         1.004
+ T3_EXTNO      -0.075         0.539         1.019
+ T4_EXTNO      -0.040         0.414         0.540         1.018
+ T5_EXTNO      -0.071         0.297         0.509         0.654         1.058
+
+
+<a name='tech4_output' class='heading'>TECHNICAL 4 OUTPUT</a>
+
+
+     ESTIMATES DERIVED FROM THE MODEL FOR FEMALE
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+                0.000         2.412         2.524         2.678         2.710
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+                2.389         0.009         0.017         0.027         0.031
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+                0.000         0.034         0.031         0.030         0.031
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+                0.035         0.031         0.034         0.034         0.035
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+                0.000        70.092        82.421        90.460        87.832
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+               68.645         0.305         0.492         0.795         0.872
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+                1.000         0.000         0.000         0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+                0.000         0.760         0.623         0.427         0.383
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA          0.081
+ T3_LADDE       0.249         1.275
+ T4_LADDE       0.223         0.980         0.968
+ T5_LADDE       0.207         0.801         0.768         0.822
+ T6_LADDE       0.222         0.795         0.747         0.767         0.822
+ T2_LADDE       0.244         1.151         0.904         0.753         0.757
+ T2_EXTNO      -0.061        -0.195        -0.159        -0.154        -0.168
+ T3_EXTNO      -0.069        -0.190        -0.155        -0.161        -0.182
+ T4_EXTNO      -0.057        -0.189        -0.153        -0.151        -0.163
+ T5_EXTNO      -0.038        -0.154        -0.130        -0.116        -0.124
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE       1.322
+ T2_EXTNO      -0.150         1.007
+ T3_EXTNO      -0.149         0.592         1.030
+ T4_EXTNO      -0.155         0.439         0.558         1.014
+ T5_EXTNO      -0.136         0.410         0.506         0.620         1.044
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA          0.023
+ T3_LADDE       0.043         0.034
+ T4_LADDE       0.039         0.032         0.033
+ T5_LADDE       0.037         0.031         0.031         0.030
+ T6_LADDE       0.039         0.032         0.031         0.032         0.031
+ T2_LADDE       0.041         0.032         0.030         0.030         0.032
+ T2_EXTNO       0.017         0.037         0.030         0.028         0.031
+ T3_EXTNO       0.019         0.036         0.032         0.029         0.031
+ T4_EXTNO       0.019         0.039         0.033         0.032         0.033
+ T5_EXTNO       0.021         0.038         0.034         0.031         0.032
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE       0.032
+ T2_EXTNO       0.035         0.052
+ T3_EXTNO       0.037         0.041         0.058
+ T4_EXTNO       0.038         0.040         0.043         0.068
+ T5_EXTNO       0.038         0.045         0.051         0.055         0.083
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA          3.485
+ T3_LADDE       5.801        37.440
+ T4_LADDE       5.684        31.033        29.712
+ T5_LADDE       5.601        26.225        25.175        27.166
+ T6_LADDE       5.657        25.049        24.001        24.278        26.220
+ T2_LADDE       5.986        35.429        29.732        25.457        23.916
+ T2_EXTNO      -3.530        -5.277        -5.343        -5.492        -5.466
+ T3_EXTNO      -3.743        -5.342        -4.856        -5.539        -5.787
+ T4_EXTNO      -3.007        -4.825        -4.601        -4.783        -4.972
+ T5_EXTNO      -1.841        -3.998        -3.857        -3.704        -3.820
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE      41.155
+ T2_EXTNO      -4.272        19.478
+ T3_EXTNO      -4.012        14.288        17.852
+ T4_EXTNO      -4.116        11.000        12.997        14.868
+ T5_EXTNO      -3.610         9.055        10.005        11.368        12.596
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA          0.000
+ T3_LADDE       0.000         0.000
+ T4_LADDE       0.000         0.000         0.000
+ T5_LADDE       0.000         0.000         0.000         0.000
+ T6_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T3_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T4_EXTNO       0.003         0.000         0.000         0.000         0.000
+ T5_EXTNO       0.066         0.000         0.000         0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE       0.000
+ T2_EXTNO       0.000         0.000
+ T3_EXTNO       0.000         0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA          1.000
+ T3_LADDE       0.776         1.000
+ T4_LADDE       0.797         0.882         1.000
+ T5_LADDE       0.802         0.783         0.861         1.000
+ T6_LADDE       0.860         0.777         0.837         0.933         1.000
+ T2_LADDE       0.746         0.886         0.799         0.722         0.726
+ T2_EXTNO      -0.213        -0.172        -0.162        -0.169        -0.185
+ T3_EXTNO      -0.240        -0.166        -0.156        -0.175        -0.198
+ T4_EXTNO      -0.198        -0.166        -0.154        -0.165        -0.179
+ T5_EXTNO      -0.132        -0.133        -0.129        -0.126        -0.134
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE       1.000
+ T2_EXTNO      -0.130         1.000
+ T3_EXTNO      -0.128         0.581         1.000
+ T4_EXTNO      -0.134         0.434         0.546         1.000
+ T5_EXTNO      -0.116         0.400         0.488         0.602         1.000
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA          0.000
+ T3_LADDE       0.027         0.000
+ T4_LADDE       0.028         0.010         0.000
+ T5_LADDE       0.029         0.013         0.010         0.000
+ T6_LADDE       0.027         0.014         0.012         0.009         0.000
+ T2_LADDE       0.032         0.009         0.012         0.016         0.018
+ T2_EXTNO       0.049         0.031         0.029         0.030         0.032
+ T3_EXTNO       0.050         0.030         0.031         0.030         0.033
+ T4_EXTNO       0.054         0.032         0.032         0.033         0.034
+ T5_EXTNO       0.065         0.033         0.033         0.033         0.034
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE       0.000
+ T2_EXTNO       0.029         0.000
+ T3_EXTNO       0.031         0.025         0.000
+ T4_EXTNO       0.031         0.030         0.030         0.000
+ T5_EXTNO       0.031         0.032         0.032         0.031         0.000
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA        999.000
+ T3_LADDE      29.257       999.000
+ T4_LADDE      28.660        92.061       999.000
+ T5_LADDE      27.944        61.605        83.600       999.000
+ T6_LADDE      31.817        56.045        70.667       108.616       999.000
+ T2_LADDE      23.397        99.062        66.219        46.031        39.881
+ T2_EXTNO      -4.358        -5.524        -5.573        -5.737        -5.704
+ T3_EXTNO      -4.765        -5.595        -5.005        -5.775        -6.069
+ T4_EXTNO      -3.657        -5.172        -4.889        -5.077        -5.294
+ T5_EXTNO      -2.025        -4.075        -3.954        -3.811        -3.953
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE     999.000
+ T2_EXTNO      -4.418       999.000
+ T3_EXTNO      -4.130        23.352       999.000
+ T4_EXTNO      -4.344        14.334        18.377       999.000
+ T5_EXTNO      -3.687        12.557        15.265        19.324       999.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA          0.000
+ T3_LADDE       0.000         0.000
+ T4_LADDE       0.000         0.000         0.000
+ T5_LADDE       0.000         0.000         0.000         0.000
+ T6_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T3_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T5_EXTNO       0.043         0.000         0.000         0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE       0.000
+ T2_EXTNO       0.000         0.000
+ T3_EXTNO       0.000         0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000         0.000
+
+
+     ESTIMATES DERIVED FROM THE MODEL FOR MALE
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+               -0.118         2.249         2.406         2.556         2.597
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+                2.264         0.003         0.010         0.027         0.062
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+                0.122         0.035         0.033         0.034         0.039
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+                0.035         0.032         0.036         0.038         0.043
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+               -0.963        63.765        72.061        75.378        66.446
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+               64.393         0.082         0.290         0.699         1.447
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+                0.335         0.000         0.000         0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+                0.000         0.935         0.772         0.485         0.148
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA          0.070
+ T3_LADDE       0.219         1.221
+ T4_LADDE       0.207         0.976         0.983
+ T5_LADDE       0.194         0.796         0.789         0.891
+ T6_LADDE       0.209         0.789         0.771         0.831         0.948
+ T2_LADDE       0.213         1.107         0.898         0.742         0.743
+ T2_EXTNO      -0.045        -0.056        -0.088        -0.116        -0.129
+ T3_EXTNO      -0.060        -0.118        -0.149        -0.173        -0.184
+ T4_EXTNO      -0.042        -0.067        -0.092        -0.143        -0.145
+ T5_EXTNO      -0.045        -0.066        -0.091        -0.128        -0.138
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE       1.279
+ T2_EXTNO       0.000         1.004
+ T3_EXTNO      -0.075         0.539         1.019
+ T4_EXTNO      -0.040         0.414         0.540         1.018
+ T5_EXTNO      -0.071         0.297         0.509         0.654         1.058
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA          0.032
+ T3_LADDE       0.060         0.036
+ T4_LADDE       0.058         0.035         0.035
+ T5_LADDE       0.055         0.033         0.034         0.036
+ T6_LADDE       0.060         0.039         0.038         0.039         0.043
+ T2_LADDE       0.054         0.035         0.033         0.032         0.038
+ T2_EXTNO       0.018         0.037         0.033         0.034         0.039
+ T3_EXTNO       0.020         0.037         0.037         0.035         0.040
+ T4_EXTNO       0.022         0.043         0.039         0.041         0.043
+ T5_EXTNO       0.025         0.044         0.039         0.039         0.041
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE       0.033
+ T2_EXTNO       0.036         0.062
+ T3_EXTNO       0.039         0.048         0.059
+ T4_EXTNO       0.043         0.051         0.055         0.083
+ T5_EXTNO       0.046         0.044         0.057         0.074         0.097
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA          2.229
+ T3_LADDE       3.686        33.642
+ T4_LADDE       3.591        28.231        28.067
+ T5_LADDE       3.537        24.200        23.354        24.549
+ T6_LADDE       3.472        20.377        20.055        21.547        21.962
+ T2_LADDE       3.912        31.910        26.983        23.196        19.628
+ T2_EXTNO      -2.530        -1.528        -2.706        -3.422        -3.288
+ T3_EXTNO      -3.017        -3.181        -4.049        -4.871        -4.637
+ T4_EXTNO      -1.930        -1.568        -2.333        -3.463        -3.392
+ T5_EXTNO      -1.794        -1.508        -2.337        -3.275        -3.377
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE      39.073
+ T2_EXTNO       0.003        16.197
+ T3_EXTNO      -1.927        11.236        17.191
+ T4_EXTNO      -0.925         8.147         9.896        12.297
+ T5_EXTNO      -1.524         6.691         8.952         8.789        10.914
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA          0.026
+ T3_LADDE       0.000         0.000
+ T4_LADDE       0.000         0.000         0.000
+ T5_LADDE       0.000         0.000         0.000         0.000
+ T6_LADDE       0.001         0.000         0.000         0.000         0.000
+ T2_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_EXTNO       0.011         0.127         0.007         0.001         0.001
+ T3_EXTNO       0.003         0.001         0.000         0.000         0.000
+ T4_EXTNO       0.054         0.117         0.020         0.001         0.001
+ T5_EXTNO       0.073         0.132         0.019         0.001         0.001
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE       0.000
+ T2_EXTNO       0.998         0.000
+ T3_EXTNO       0.054         0.000         0.000
+ T4_EXTNO       0.355         0.000         0.000         0.000
+ T5_EXTNO       0.127         0.000         0.000         0.000         0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA          1.000
+ T3_LADDE       0.749         1.000
+ T4_LADDE       0.787         0.891         1.000
+ T5_LADDE       0.774         0.763         0.843         1.000
+ T6_LADDE       0.809         0.733         0.798         0.904         1.000
+ T2_LADDE       0.709         0.886         0.801         0.695         0.675
+ T2_EXTNO      -0.171        -0.050        -0.089        -0.123        -0.132
+ T3_EXTNO      -0.225        -0.106        -0.149        -0.181        -0.187
+ T4_EXTNO      -0.157        -0.060        -0.092        -0.150        -0.147
+ T5_EXTNO      -0.165        -0.058        -0.089        -0.132        -0.138
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE       1.000
+ T2_EXTNO       0.000         1.000
+ T3_EXTNO      -0.065         0.533         1.000
+ T4_EXTNO      -0.035         0.409         0.530         1.000
+ T5_EXTNO      -0.061         0.289         0.491         0.631         1.000
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA          0.000
+ T3_LADDE       0.042         0.000
+ T4_LADDE       0.044         0.009         0.000
+ T5_LADDE       0.042         0.015         0.013         0.000
+ T6_LADDE       0.045         0.020         0.017         0.011         0.000
+ T2_LADDE       0.044         0.010         0.013         0.018         0.023
+ T2_EXTNO       0.066         0.033         0.032         0.035         0.039
+ T3_EXTNO       0.068         0.033         0.035         0.035         0.039
+ T4_EXTNO       0.078         0.038         0.038         0.041         0.041
+ T5_EXTNO       0.094         0.038         0.038         0.040         0.040
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE       0.000
+ T2_EXTNO       0.031         0.000
+ T3_EXTNO       0.034         0.032         0.000
+ T4_EXTNO       0.037         0.037         0.036         0.000
+ T5_EXTNO       0.039         0.039         0.040         0.038         0.000
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA        999.000
+ T3_LADDE      17.649       999.000
+ T4_LADDE      17.826        97.845       999.000
+ T5_LADDE      18.321        52.519        65.220       999.000
+ T6_LADDE      18.085        37.328        45.951        85.438       999.000
+ T2_LADDE      16.219        93.120        60.270        37.820        29.515
+ T2_EXTNO      -2.579        -1.531        -2.736        -3.540        -3.391
+ T3_EXTNO      -3.292        -3.251        -4.210        -5.145        -4.868
+ T4_EXTNO      -2.011        -1.588        -2.403        -3.675        -3.580
+ T5_EXTNO      -1.756        -1.518        -2.360        -3.328        -3.420
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE     999.000
+ T2_EXTNO       0.003       999.000
+ T3_EXTNO      -1.949        16.728       999.000
+ T4_EXTNO      -0.933        11.012        14.625       999.000
+ T5_EXTNO      -1.545         7.452        12.287        16.431       999.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              ALPHA         T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ ALPHA          0.000
+ T3_LADDE       0.000         0.000
+ T4_LADDE       0.000         0.000         0.000
+ T5_LADDE       0.000         0.000         0.000         0.000
+ T6_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_EXTNO       0.010         0.126         0.006         0.000         0.001
+ T3_EXTNO       0.001         0.001         0.000         0.000         0.000
+ T4_EXTNO       0.044         0.112         0.016         0.000         0.000
+ T5_EXTNO       0.079         0.129         0.018         0.001         0.001
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE       0.000
+ T2_EXTNO       0.998         0.000
+ T3_EXTNO       0.051         0.000         0.000
+ T4_EXTNO       0.351         0.000         0.000         0.000
+ T5_EXTNO       0.122         0.000         0.000         0.000         0.000
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    e:\onedrive - universiteit utrecht\trails agdelatt paper\submission eur child & adolescent psychiatry\peer review\fi
+
+     Beginning Time:  21:57:59
+        Ending Time:  21:58:08
+       Elapsed Time:  00:00:09
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2021 Muthen & Muthen
+</pre>
+</body>
+</html>
