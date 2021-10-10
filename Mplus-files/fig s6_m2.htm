@@ -1,0 +1,2120 @@
+<!DOCTYPE html>
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+a:link
+{
+    color: black;
+    text-decoration: none;
+}
+a[name]:hover
+{
+    text-decoration: none;
+}
+a:hover
+{
+    color: blue;
+    text-decoration: underline;
+}
+a:visited
+{
+    color: black;
+    text-decoration: none;
+}
+.heading
+{
+    color: black;
+    font-weight: bold;
+    font-size: 110%;
+}
+.heading:hover
+{
+    color: black;
+    font-weight: bold;
+    font-size: 110%;
+    text-decoration: none;
+}
+</style>
+
+<body style="font-family:'Courier New'; font-size:14px;">
+<p class="heading">
+Mplus VERSION 8.6<br />
+MUTHEN & MUTHEN<br />
+10/10/2021   9:36 PM<br />
+</p>
+
+<p class='heading'>OUTPUT SECTIONS</p>
+
+<ul>
+     <li><a href='#input'>Input Instructions</a></li>
+     <li><a href='#inputmessages'>Input Warnings And Errors</a></li>
+     <li><a href='#summary_analysis'>Summary Of Analysis</a></li>
+     <li><a href='#summary_data'>Summary Of Data</a></li>
+     <li><a href='#covariance_coverage'>Covariance Coverage Of Data</a></li>
+     <li><a href='#samplestats'>Sample Statistics</a></li>
+     <li><a href='#univariatess'>Univariate Sample Statistics</a></li>
+     <li><a href='#model_fit'>Model Fit Information</a></li>
+     <li><a href='#model_results'>Model Results</a></li>
+     <li><a href='#standardized_results'>Standardized Model Results</a></li>
+     <li><a href='#rsquare'>R-square</a></li>
+     <li><a href='#tech1_output'>Technical 1 Output</a></li>
+     <li><a href='#tech4_output'>Technical 4 Output</a></li>
+</ul>
+<pre>
+
+<a name='input' class='heading'>INPUT INSTRUCTIONS</a>
+
+  Title:
+  Fig. S6, Model 2
+
+  Data:
+    File is TRAILS_extatt_final_11022021.dat ;
+  Variable:
+    Names are
+       idno g1ageyrc T5_ladder_4cat T6_ladder_4cat T4_ladder_4cat T3_ladder_4cat
+       T2_ladder_4cat g1sex p1ses p1ses3 g1wiscdq district_4cat_dummy1 district_4cat_dummy2
+       district_4cat_dummy3 ethni_bin c4arap c5arap c6arap T2_extnosubs T3_extnosubs
+       T4_extnosubs T5_extnosubs T6_extnosubs T2_attnoschool T3_attnoschool
+       T2_anxdepwith T3_anxdepwith T4_anxdepwith T5_anxdepwith T6_anxdepwith
+       T2_attCons T3_attCons T4_attCons T5_attCons T6_attCons T2_extCons
+       T3_extCons T4_extCons T5_extCons T6_extCons T2_anxdepwithCons T3_anxdepwithCons
+       T4_anxdepwithCons T5_anxdepwithCons T6_anxdepwithCons;
+    Missing are all (-9999) ;
+
+     Usevariables are T2_ladder_4cat T3_ladder_4cat T4_ladder_4cat
+    T5_ladder_4cat T6_ladder_4cat
+    T2_extnosubs T3_extnosubs T4_extnosubs T5_extnosubs T6_extnosubs
+    g1sex g1ageyrc district_4cat_dummy1 district_4cat_dummy2
+       district_4cat_dummy3 ethni_bin;
+
+    auxiliary = (m)   p1ses g1wiscdq
+      T2_attnoschool T3_attnoschool c4arap c5arap c6arap;
+
+  Define:
+  Standardize T2_extnosubs T3_extnosubs T4_extnosubs T5_extnosubs T6_extnosubs;
+
+  Model:
+  T2_ladder_4cat T2_extnosubs on
+  g1sex g1ageyrc district_4cat_dummy1 district_4cat_dummy2
+       district_4cat_dummy3 ethni_bin;
+
+  T3_ladder_4cat T3_extnosubs on T2_ladder_4cat T2_extnosubs
+  g1sex g1ageyrc district_4cat_dummy1 district_4cat_dummy2
+       district_4cat_dummy3 ethni_bin;
+
+  T4_ladder_4cat T4_extnosubs on T3_ladder_4cat T3_extnosubs
+  g1sex g1ageyrc district_4cat_dummy1 district_4cat_dummy2
+       district_4cat_dummy3 ethni_bin;
+
+  T5_ladder_4cat T5_extnosubs on T4_ladder_4cat T4_extnosubs
+  g1sex g1ageyrc district_4cat_dummy1 district_4cat_dummy2
+       district_4cat_dummy3 ethni_bin;
+
+  T6_ladder_4cat T6_extnosubs on T5_ladder_4cat T5_extnosubs
+  g1sex g1ageyrc district_4cat_dummy1 district_4cat_dummy2
+       district_4cat_dummy3 ethni_bin;
+
+  T2_ladder_4cat with T2_extnosubs;
+  T3_ladder_4cat with T3_extnosubs;
+  T4_ladder_4cat with T4_extnosubs;
+  T5_ladder_4cat with T5_extnosubs;
+  T6_ladder_4cat with T6_extnosubs;
+
+  g1sex;
+  g1ageyrc;
+  district_4cat_dummy1;
+  district_4cat_dummy2;
+  district_4cat_dummy3;
+  ethni_bin;
+
+  ANALYSIS:
+  Estimator = MLR;
+
+  OUTPUT:     TECH1 TECH4 SAMPSTAT STANDARDIZED (STDYX);
+
+
+<a name='inputmessages' class='heading'></a>
+
+*** WARNING in VARIABLE command
+  Note that only the first 8 characters of variable names are used in the output.
+  Shorten variable names to avoid any confusion.
+   1 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+Fig. S6, Model 2
+
+<a name='summary_analysis' class='heading'>SUMMARY OF ANALYSIS</a>
+
+Number of groups                                                 1
+Number of observations                                        2229
+
+Number of dependent variables                                   10
+Number of independent variables                                  6
+Number of continuous latent variables                            0
+
+Observed dependent variables
+
+  Continuous
+   T2_LADDER_  T3_LADDER_  T4_LADDER_  T5_LADDER_  T6_LADDER_  T2_EXTNOSU
+   T3_EXTNOSU  T4_EXTNOSU  T5_EXTNOSU  T6_EXTNOSU
+
+Observed independent variables
+   G1SEX       G1AGEYRC    DISTRICT    DISTRICT    DISTRICT    ETHNI_BI
+
+Observed auxiliary variables
+   P1SES       G1WISCDQ    T2_ATTNOSC  T3_ATTNOSC  C4ARAP      C5ARAP
+   C6ARAP
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  TRAILS_extatt_final_11022021.dat
+
+Input data format  FREE
+
+
+<a name='summary_data' class='heading'>SUMMARY OF DATA</a>
+
+     Number of missing data patterns           170
+
+
+<a name='covariance_coverage' class='heading'>COVARIANCE COVERAGE OF DATA</a>
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T2_LADDE       0.885
+ T3_LADDE       0.666         0.686
+ T4_LADDE       0.629         0.581         0.677
+ T5_LADDE       0.599         0.558         0.621         0.641
+ T6_LADDE       0.501         0.470         0.524         0.525         0.535
+ T2_EXTNO       0.849         0.675         0.663         0.630         0.526
+ T3_EXTNO       0.716         0.656         0.601         0.571         0.485
+ T4_EXTNO       0.704         0.621         0.653         0.611         0.520
+ T5_EXTNO       0.625         0.571         0.619         0.617         0.519
+ T6_EXTNO       0.551         0.505         0.546         0.534         0.526
+ G1SEX          0.885         0.686         0.677         0.641         0.535
+ G1AGEYRC       0.885         0.686         0.677         0.641         0.535
+ DISTRICT       0.885         0.686         0.677         0.641         0.535
+ DISTRICT       0.885         0.686         0.677         0.641         0.535
+ DISTRICT       0.885         0.686         0.677         0.641         0.535
+ ETHNI_BI       0.885         0.686         0.677         0.641         0.535
+
+
+           Covariance Coverage
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+ T2_EXTNO       0.938
+ T3_EXTNO       0.734         0.745
+ T4_EXTNO       0.742         0.662         0.759
+ T5_EXTNO       0.660         0.593         0.637         0.671
+ T6_EXTNO       0.578         0.525         0.567         0.559         0.590
+ G1SEX          0.938         0.745         0.759         0.671         0.590
+ G1AGEYRC       0.938         0.745         0.759         0.671         0.590
+ DISTRICT       0.938         0.745         0.759         0.671         0.590
+ DISTRICT       0.938         0.745         0.759         0.671         0.590
+ DISTRICT       0.938         0.745         0.759         0.671         0.590
+ ETHNI_BI       0.938         0.745         0.759         0.671         0.590
+
+
+           Covariance Coverage
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+ G1SEX          1.000
+ G1AGEYRC       1.000         1.000
+ DISTRICT       1.000         1.000         1.000
+ DISTRICT       1.000         1.000         1.000         1.000
+ DISTRICT       1.000         1.000         1.000         1.000         1.000
+ ETHNI_BI       1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              ETHNI_BI
+              ________
+ ETHNI_BI       1.000
+
+
+<a name='samplestats' class='heading'>SAMPLE STATISTICS</a>
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+                2.328         2.335         2.464         2.617         2.659
+
+
+           Means
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+                0.007         0.016         0.030         0.045         0.061
+
+
+           Means
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+                0.493        11.111         0.267         0.219         0.157
+
+
+           Means
+              ETHNI_BI
+              ________
+                0.135
+
+
+           Covariances
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T2_LADDE       1.305
+ T3_LADDE       1.132         1.250
+ T4_LADDE       0.925         0.977         0.980
+ T5_LADDE       0.764         0.807         0.782         0.860
+ T6_LADDE       0.744         0.786         0.758         0.798         0.870
+ T2_EXTNO      -0.076        -0.130        -0.107        -0.157        -0.158
+ T3_EXTNO      -0.114        -0.167        -0.160        -0.185        -0.182
+ T4_EXTNO      -0.101        -0.135        -0.128        -0.149        -0.150
+ T5_EXTNO      -0.101        -0.113        -0.113        -0.114        -0.122
+ T6_EXTNO      -0.093        -0.111        -0.101        -0.098        -0.113
+ G1SEX         -0.032        -0.040        -0.032        -0.031        -0.027
+ G1AGEYRC      -0.011         0.000        -0.004        -0.014        -0.016
+ DISTRICT      -0.015         0.009        -0.005         0.007         0.001
+ DISTRICT       0.020         0.001         0.006         0.004         0.008
+ DISTRICT      -0.034        -0.040        -0.026        -0.024        -0.026
+ ETHNI_BI      -0.035        -0.021        -0.010        -0.011        -0.004
+
+
+           Covariances
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+ T2_EXTNO       1.005
+ T3_EXTNO       0.569         1.025
+ T4_EXTNO       0.427         0.550         1.018
+ T5_EXTNO       0.355         0.503         0.636         1.048
+ T6_EXTNO       0.330         0.468         0.630         0.664         1.019
+ G1SEX          0.026         0.035         0.006         0.009         0.019
+ G1AGEYRC       0.014        -0.016         0.021         0.000         0.008
+ DISTRICT      -0.004        -0.025        -0.011        -0.024        -0.032
+ DISTRICT       0.016         0.015         0.011         0.014         0.003
+ DISTRICT      -0.016        -0.002        -0.021        -0.018        -0.010
+ ETHNI_BI       0.020         0.016         0.038         0.032         0.023
+
+
+           Covariances
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+ G1SEX          0.250
+ G1AGEYRC       0.008         0.309
+ DISTRICT       0.002         0.061         0.196
+ DISTRICT       0.003        -0.093        -0.059         0.171
+ DISTRICT       0.005        -0.056        -0.042        -0.034         0.132
+ ETHNI_BI       0.002         0.019        -0.003        -0.006        -0.011
+
+
+           Covariances
+              ETHNI_BI
+              ________
+ ETHNI_BI       0.117
+
+
+           Correlations
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T2_LADDE       1.000
+ T3_LADDE       0.886         1.000
+ T4_LADDE       0.818         0.883         1.000
+ T5_LADDE       0.721         0.779         0.852         1.000
+ T6_LADDE       0.698         0.753         0.821         0.922         1.000
+ T2_EXTNO      -0.067        -0.116        -0.108        -0.169        -0.169
+ T3_EXTNO      -0.099        -0.148        -0.160        -0.197        -0.193
+ T4_EXTNO      -0.088        -0.120        -0.128        -0.159        -0.159
+ T5_EXTNO      -0.087        -0.099        -0.112        -0.120        -0.128
+ T6_EXTNO      -0.080        -0.098        -0.101        -0.104        -0.120
+ G1SEX         -0.055        -0.072        -0.065        -0.068        -0.058
+ G1AGEYRC      -0.017         0.000        -0.007        -0.027        -0.031
+ DISTRICT      -0.029         0.017        -0.013         0.016         0.003
+ DISTRICT       0.043         0.003         0.014         0.009         0.021
+ DISTRICT      -0.083        -0.099        -0.073        -0.071        -0.077
+ ETHNI_BI      -0.089        -0.055        -0.031        -0.035        -0.011
+
+
+           Correlations
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+ T2_EXTNO       1.000
+ T3_EXTNO       0.560         1.000
+ T4_EXTNO       0.423         0.539         1.000
+ T5_EXTNO       0.346         0.485         0.616         1.000
+ T6_EXTNO       0.326         0.458         0.619         0.642         1.000
+ G1SEX          0.053         0.069         0.012         0.018         0.038
+ G1AGEYRC       0.026        -0.029         0.038        -0.001         0.015
+ DISTRICT      -0.009        -0.056        -0.026        -0.053        -0.072
+ DISTRICT       0.038         0.035         0.026         0.033         0.008
+ DISTRICT      -0.044        -0.005        -0.058        -0.048        -0.028
+ ETHNI_BI       0.058         0.045         0.110         0.090         0.066
+
+
+           Correlations
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+ G1SEX          1.000
+ G1AGEYRC       0.030         1.000
+ DISTRICT       0.007         0.247         1.000
+ DISTRICT       0.013        -0.405        -0.320         1.000
+ DISTRICT       0.026        -0.277        -0.261        -0.229         1.000
+ ETHNI_BI       0.012         0.098        -0.019        -0.045        -0.091
+
+
+           Correlations
+              ETHNI_BI
+              ________
+ ETHNI_BI       1.000
+
+
+     MAXIMUM LOG-LIKELIHOOD VALUE FOR THE UNRESTRICTED (H1) MODEL IS -34134.678
+
+
+<a name='univariatess' class='heading'>UNIVARIATE SAMPLE STATISTICS</a>
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     T2_LADDER_4CAT        2.336       0.227       1.000   32.20%       1.000      2.000      2.000
+            1972.000       1.331      -1.393       4.000   23.17%       3.000      4.000
+     T3_LADDER_4CAT        2.549      -0.032       1.000   22.83%       1.000      2.000      3.000
+            1529.000       1.244      -1.356       4.000   27.01%       3.000      4.000
+     T4_LADDER_4CAT        2.704      -0.109       1.000   10.68%       2.000      2.000      3.000
+            1508.000       0.918      -1.002       4.000   24.80%       3.000      4.000
+     T5_LADDER_4CAT        2.803      -0.356       1.000    9.52%       2.000      3.000      3.000
+            1429.000       0.831      -0.676       4.000   24.14%       3.000      4.000
+     T6_LADDER_4CAT        2.935      -0.442       1.000    6.54%       2.000      3.000      3.000
+            1192.000       0.782      -0.591       4.000   29.53%       3.000      4.000
+     T2_EXTNOSUBS          0.000       1.033      -1.474    2.53%      -0.808     -0.475     -0.143
+            2091.000       1.000       1.427       5.182    0.05%       0.024      0.856
+     T3_EXTNOSUBS          0.000       0.926      -1.501    1.75%      -0.856     -0.533     -0.211
+            1660.000       1.000       0.734       4.143    0.12%       0.112      0.757
+     T4_EXTNOSUBS          0.000       1.500      -1.071    8.98%      -0.784     -0.497     -0.210
+            1692.000       1.000       2.776       5.672    0.06%      -0.067      0.650
+     T5_EXTNOSUBS          0.000       1.582      -1.066    9.89%      -0.900     -0.400     -0.234
+            1496.000       1.000       3.479       6.427    0.07%      -0.067      0.765
+     T6_EXTNOSUBS          0.000       1.559      -1.048   10.87%      -0.887     -0.401     -0.239
+            1315.000       1.000       3.059       5.101    0.08%      -0.077      0.732
+     G1SEX                 0.493       0.030       0.000   50.74%       0.000      0.000      0.000
+            2229.000       0.250      -1.999       1.000   49.26%       1.000      1.000
+     G1AGEYRC             11.111       0.485      10.010    0.13%      10.640     10.890     11.020
+            2229.000       0.309      -0.467      12.580    0.04%      11.170     11.610
+     DISTRICT_4CAT_D       0.267       1.051       0.000   73.26%       0.000      0.000      0.000
+            2229.000       0.196      -0.895       1.000   26.74%       0.000      1.000
+     DISTRICT_4CAT_D       0.219       1.356       0.000   78.06%       0.000      0.000      0.000
+            2229.000       0.171      -0.161       1.000   21.94%       0.000      1.000
+     DISTRICT_4CAT_D       0.157       1.885       0.000   84.30%       0.000      0.000      0.000
+            2229.000       0.132       1.555       1.000   15.70%       0.000      0.000
+     ETHNI_BIN             0.135       2.136       0.000   86.50%       0.000      0.000      0.000
+            2229.000       0.117       2.561       1.000   13.50%       0.000      0.000
+     P1SES                -0.049      -0.051      -1.940    0.05%      -0.810     -0.260     -0.040
+            2187.000       0.642      -0.805       1.730    0.09%       0.180      0.710
+     G1WISCDQ             97.188      -0.058      45.000    0.18%      85.000     94.000     97.000
+            2220.000     224.893       0.123     149.000    0.05%     100.000    109.000
+     T2_ATTNOSCHOOL        0.562       0.361       0.000    6.31%       0.250      0.500      0.500
+            2092.000       0.113      -0.267       1.750    0.10%       0.625      0.875
+     T3_ATTNOSCHOOL        0.594       0.393       0.000    4.65%       0.250      0.500      0.625
+            1656.000       0.119      -0.225       1.875    0.06%       0.625      0.875
+     C4ARAP                0.450       0.819       0.000    4.88%       0.133      0.333      0.400
+            1659.000       0.103       0.360       1.733    0.12%       0.467      0.733
+     C5ARAP                0.429       0.862       0.000    6.01%       0.133      0.267      0.333
+            1497.000       0.104       0.293       1.667    0.07%       0.467      0.667
+     C6ARAP                0.446       0.989       0.000    6.62%       0.133      0.333      0.400
+            1315.000       0.115       0.839       1.733    0.08%       0.467      0.733
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+<a name='model_fit' class='heading'>MODEL FIT INFORMATION</a>
+
+Number of Free Parameters                      128
+
+Loglikelihood Including the Auxiliary Part
+
+          H0 Value                      -34333.476
+          H0 Scaling Correction Factor      1.0855
+            for MLR
+          H1 Value                      -34134.678
+          H1 Scaling Correction Factor      1.0929
+            for MLR
+
+Information Criteria Including the Auxiliary Part
+
+          Number of Free Parameters            275
+          Akaike (AIC)                   69216.953
+          Bayesian (BIC)                 70787.013
+          Sample-Size Adjusted BIC       69913.294
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                            337.659*
+          Degrees of Freedom                    24
+          P-Value                           0.0000
+          Scaling Correction Factor         1.1775
+            for MLR
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.077
+          90 Percent C.I.                    0.069  0.084
+          Probability RMSEA <= .05           0.000
+
+CFI/TLI
+
+          CFI                                0.973
+          TLI                                0.866
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                          11848.027
+          Degrees of Freedom                   120
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.050
+
+
+
+<a name='model_results' class='heading'>MODEL RESULTS</a>
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ T2_LADDE ON
+    G1SEX             -0.113      0.049     -2.307      0.021
+    G1AGEYRC          -0.066      0.054     -1.228      0.220
+    DISTRICT_4        -0.156      0.065     -2.404      0.016
+    DISTRICT_4        -0.056      0.077     -0.730      0.465
+    DISTRICT_4        -0.377      0.079     -4.766      0.000
+    ETHNI_BIN         -0.328      0.074     -4.441      0.000
+
+ T2_EXTNO ON
+    G1SEX              0.104      0.044      2.382      0.017
+    G1AGEYRC           0.059      0.047      1.250      0.211
+    DISTRICT_4        -0.017      0.056     -0.303      0.762
+    DISTRICT_4         0.115      0.067      1.716      0.086
+    DISTRICT_4        -0.059      0.068     -0.861      0.389
+    ETHNI_BIN          0.158      0.072      2.181      0.029
+
+ T3_LADDE ON
+    T2_LADDER_         0.868      0.010     84.304      0.000
+    T2_EXTNOSU        -0.063      0.014     -4.441      0.000
+    G1SEX             -0.042      0.026     -1.616      0.106
+    G1AGEYRC          -0.032      0.028     -1.112      0.266
+    DISTRICT_4         0.067      0.033      2.004      0.045
+    DISTRICT_4        -0.094      0.038     -2.488      0.013
+    DISTRICT_4        -0.092      0.046     -2.011      0.044
+    ETHNI_BIN          0.083      0.040      2.043      0.041
+
+ T3_EXTNO ON
+    T2_LADDER_        -0.053      0.018     -2.985      0.003
+    T2_EXTNOSU         0.565      0.023     24.205      0.000
+    G1SEX              0.082      0.041      2.007      0.045
+    G1AGEYRC          -0.089      0.043     -2.068      0.039
+    DISTRICT_4        -0.126      0.053     -2.373      0.018
+    DISTRICT_4        -0.065      0.061     -1.071      0.284
+    DISTRICT_4        -0.058      0.069     -0.847      0.397
+    ETHNI_BIN          0.030      0.064      0.470      0.638
+
+ T4_LADDE ON
+    T3_LADDER_         0.780      0.012     67.690      0.000
+    T3_EXTNOSU        -0.031      0.013     -2.377      0.017
+    G1SEX              0.001      0.025      0.041      0.967
+    G1AGEYRC           0.006      0.027      0.222      0.824
+    DISTRICT_4        -0.048      0.032     -1.488      0.137
+    DISTRICT_4         0.017      0.038      0.448      0.654
+    DISTRICT_4         0.031      0.041      0.752      0.452
+    ETHNI_BIN          0.058      0.040      1.476      0.140
+
+ T4_EXTNO ON
+    T3_LADDER_        -0.038      0.020     -1.877      0.060
+    T3_EXTNOSU         0.536      0.027     19.862      0.000
+    G1SEX             -0.061      0.042     -1.461      0.144
+    G1AGEYRC           0.089      0.045      1.973      0.049
+    DISTRICT_4        -0.024      0.055     -0.443      0.658
+    DISTRICT_4         0.044      0.060      0.728      0.466
+    DISTRICT_4        -0.102      0.065     -1.579      0.114
+    ETHNI_BIN          0.220      0.077      2.840      0.005
+
+ T5_LADDE ON
+    T4_LADDER_         0.792      0.013     59.381      0.000
+    T4_EXTNOSU        -0.046      0.016     -2.907      0.004
+    G1SEX             -0.017      0.026     -0.654      0.513
+    G1AGEYRC          -0.058      0.027     -2.141      0.032
+    DISTRICT_4         0.055      0.032      1.727      0.084
+    DISTRICT_4        -0.024      0.038     -0.632      0.528
+    DISTRICT_4        -0.047      0.044     -1.074      0.283
+    ETHNI_BIN          0.001      0.045      0.013      0.990
+
+ T5_EXTNO ON
+    T4_LADDER_        -0.039      0.022     -1.772      0.076
+    T4_EXTNOSU         0.627      0.035     18.005      0.000
+    G1SEX              0.024      0.042      0.562      0.574
+    G1AGEYRC          -0.069      0.045     -1.529      0.126
+    DISTRICT_4        -0.105      0.055     -1.906      0.057
+    DISTRICT_4        -0.049      0.065     -0.757      0.449
+    DISTRICT_4        -0.110      0.067     -1.649      0.099
+    ETHNI_BIN          0.065      0.077      0.838      0.402
+
+ T6_LADDE ON
+    T5_LADDER_         0.927      0.010     91.651      0.000
+    T5_EXTNOSU        -0.021      0.011     -1.882      0.060
+    G1SEX              0.010      0.023      0.454      0.650
+    G1AGEYRC          -0.013      0.023     -0.562      0.574
+    DISTRICT_4        -0.026      0.026     -0.996      0.319
+    DISTRICT_4         0.008      0.035      0.228      0.820
+    DISTRICT_4        -0.043      0.035     -1.235      0.217
+    ETHNI_BIN          0.064      0.035      1.856      0.064
+
+ T6_EXTNO ON
+    T5_LADDER_        -0.028      0.026     -1.094      0.274
+    T5_EXTNOSU         0.627      0.033     19.075      0.000
+    G1SEX              0.042      0.045      0.944      0.345
+    G1AGEYRC           0.012      0.045      0.256      0.798
+    DISTRICT_4        -0.136      0.057     -2.369      0.018
+    DISTRICT_4        -0.088      0.068     -1.304      0.192
+    DISTRICT_4        -0.072      0.066     -1.083      0.279
+    ETHNI_BIN          0.010      0.076      0.129      0.898
+
+ T2_LADDE WITH
+    T2_EXTNOSU        -0.071      0.025     -2.902      0.004
+
+ T3_LADDE WITH
+    T3_EXTNOSU        -0.029      0.012     -2.492      0.013
+
+ T4_LADDE WITH
+    T4_EXTNOSU        -0.008      0.012     -0.655      0.513
+
+ T5_LADDE WITH
+    T5_EXTNOSU         0.006      0.011      0.530      0.596
+
+ T6_LADDE WITH
+    T6_EXTNOSU        -0.013      0.009     -1.551      0.121
+
+ G1AGEYRC WITH
+    G1SEX              0.008      0.006      1.439      0.150
+
+ DISTRICT WITH
+    G1SEX              0.002      0.005      0.327      0.744
+    G1AGEYRC           0.061      0.005     11.809      0.000
+
+ DISTRICT WITH
+    G1SEX              0.003      0.004      0.626      0.531
+    G1AGEYRC          -0.093      0.004    -20.916      0.000
+    DISTRICT_4        -0.059      0.003    -22.773      0.000
+
+ DISTRICT WITH
+    G1SEX              0.005      0.004      1.233      0.218
+    G1AGEYRC          -0.056      0.004    -15.685      0.000
+    DISTRICT_4        -0.042      0.002    -19.102      0.000
+    DISTRICT_4        -0.034      0.002    -17.939      0.000
+
+ ETHNI_BI WITH
+    G1SEX              0.002      0.004      0.586      0.558
+    G1AGEYRC           0.019      0.004      4.473      0.000
+    DISTRICT_4        -0.003      0.003     -0.928      0.353
+    DISTRICT_4        -0.006      0.003     -2.254      0.024
+    DISTRICT_4        -0.011      0.002     -5.445      0.000
+
+ Means
+    G1SEX              0.493      0.011     46.518      0.000
+    G1AGEYRC          11.111      0.012    944.095      0.000
+    DISTRICT_4         0.267      0.009     28.522      0.000
+    DISTRICT_4         0.219      0.009     25.028      0.000
+    DISTRICT_4         0.157      0.008     20.376      0.000
+    ETHNI_BIN          0.135      0.007     18.655      0.000
+
+ Intercepts
+    T2_LADDER_         3.275      0.612      5.348      0.000
+    T3_LADDER_         0.691      0.323      2.137      0.033
+    T4_LADDER_         0.578      0.309      1.871      0.061
+    T5_LADDER_         1.324      0.311      4.256      0.000
+    T6_LADDER_         0.382      0.262      1.460      0.144
+    T2_EXTNOSU        -0.738      0.538     -1.372      0.170
+    T3_EXTNOSU         1.142      0.498      2.291      0.022
+    T4_EXTNOSU        -0.868      0.513     -1.691      0.091
+    T5_EXTNOSU         0.921      0.518      1.777      0.076
+    T6_EXTNOSU         0.009      0.523      0.017      0.987
+
+ Variances
+    G1SEX              0.250      0.000   1594.313      0.000
+    G1AGEYRC           0.309      0.008     38.138      0.000
+    DISTRICT_4         0.196      0.004     44.915      0.000
+    DISTRICT_4         0.171      0.005     34.812      0.000
+    DISTRICT_4         0.132      0.005     25.041      0.000
+    ETHNI_BIN          0.117      0.005     22.106      0.000
+
+ Residual Variances
+    T2_LADDER_         1.277      0.023     54.592      0.000
+    T3_LADDER_         0.256      0.013     19.741      0.000
+    T4_LADDER_         0.212      0.011     18.834      0.000
+    T5_LADDER_         0.231      0.011     20.055      0.000
+    T6_LADDER_         0.129      0.010     13.046      0.000
+    T2_EXTNOSU         0.993      0.040     24.827      0.000
+    T3_EXTNOSU         0.691      0.031     22.201      0.000
+    T4_EXTNOSU         0.703      0.040     17.436      0.000
+    T5_EXTNOSU         0.639      0.039     16.436      0.000
+    T6_EXTNOSU         0.580      0.042     13.918      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.846E-08
+       (ratio of smallest to largest eigenvalue)
+
+
+<a name='standardized_results' class='heading'>STANDARDIZED MODEL RESULTS</a>
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ T2_LADDE ON
+    G1SEX             -0.050      0.021     -2.309      0.021
+    G1AGEYRC          -0.032      0.026     -1.228      0.220
+    DISTRICT_4        -0.060      0.025     -2.404      0.016
+    DISTRICT_4        -0.020      0.028     -0.730      0.465
+    DISTRICT_4        -0.120      0.025     -4.763      0.000
+    ETHNI_BIN         -0.098      0.022     -4.433      0.000
+
+ T2_EXTNO ON
+    G1SEX              0.052      0.022      2.399      0.016
+    G1AGEYRC           0.033      0.026      1.249      0.212
+    DISTRICT_4        -0.008      0.025     -0.303      0.762
+    DISTRICT_4         0.047      0.028      1.718      0.086
+    DISTRICT_4        -0.021      0.025     -0.861      0.389
+    ETHNI_BIN          0.054      0.025      2.188      0.029
+
+ T3_LADDE ON
+    T2_LADDER_         0.885      0.007    127.400      0.000
+    T2_EXTNOSU        -0.056      0.013     -4.447      0.000
+    G1SEX             -0.019      0.012     -1.616      0.106
+    G1AGEYRC          -0.016      0.014     -1.112      0.266
+    DISTRICT_4         0.026      0.013      1.999      0.046
+    DISTRICT_4        -0.035      0.014     -2.481      0.013
+    DISTRICT_4        -0.030      0.015     -2.007      0.045
+    ETHNI_BIN          0.025      0.012      2.039      0.041
+
+ T3_EXTNO ON
+    T2_LADDER_        -0.060      0.020     -3.009      0.003
+    T2_EXTNOSU         0.558      0.020     28.564      0.000
+    G1SEX              0.041      0.020      2.009      0.045
+    G1AGEYRC          -0.049      0.024     -2.075      0.038
+    DISTRICT_4        -0.055      0.023     -2.375      0.018
+    DISTRICT_4        -0.027      0.025     -1.072      0.284
+    DISTRICT_4        -0.021      0.025     -0.848      0.396
+    ETHNI_BIN          0.010      0.022      0.470      0.638
+
+ T4_LADDE ON
+    T3_LADDER_         0.882      0.007    120.570      0.000
+    T3_EXTNOSU        -0.031      0.013     -2.378      0.017
+    G1SEX              0.001      0.012      0.041      0.967
+    G1AGEYRC           0.003      0.015      0.222      0.824
+    DISTRICT_4        -0.022      0.015     -1.486      0.137
+    DISTRICT_4         0.007      0.016      0.448      0.654
+    DISTRICT_4         0.011      0.015      0.752      0.452
+    ETHNI_BIN          0.020      0.014      1.474      0.140
+
+ T4_EXTNO ON
+    T3_LADDER_        -0.042      0.022     -1.895      0.058
+    T3_EXTNOSU         0.538      0.023     23.568      0.000
+    G1SEX             -0.030      0.021     -1.459      0.145
+    G1AGEYRC           0.049      0.025      1.992      0.046
+    DISTRICT_4        -0.011      0.024     -0.443      0.658
+    DISTRICT_4         0.018      0.025      0.728      0.466
+    DISTRICT_4        -0.037      0.023     -1.582      0.114
+    ETHNI_BIN          0.074      0.026      2.860      0.004
+
+ T5_LADDE ON
+    T4_LADDER_         0.845      0.010     84.416      0.000
+    T4_EXTNOSU        -0.050      0.017     -2.904      0.004
+    G1SEX             -0.009      0.014     -0.654      0.513
+    G1AGEYRC          -0.035      0.016     -2.145      0.032
+    DISTRICT_4         0.026      0.015      1.727      0.084
+    DISTRICT_4        -0.011      0.017     -0.632      0.528
+    DISTRICT_4        -0.019      0.017     -1.073      0.283
+    ETHNI_BIN          0.000      0.016      0.013      0.990
+
+ T5_EXTNO ON
+    T4_LADDER_        -0.037      0.021     -1.772      0.076
+    T4_EXTNOSU         0.616      0.025     24.683      0.000
+    G1SEX              0.012      0.021      0.562      0.574
+    G1AGEYRC          -0.037      0.024     -1.532      0.125
+    DISTRICT_4        -0.045      0.024     -1.911      0.056
+    DISTRICT_4        -0.020      0.026     -0.759      0.448
+    DISTRICT_4        -0.039      0.024     -1.659      0.097
+    ETHNI_BIN          0.022      0.026      0.838      0.402
+
+ T6_LADDE ON
+    T5_LADDER_         0.920      0.007    126.206      0.000
+    T5_EXTNOSU        -0.023      0.012     -1.876      0.061
+    G1SEX              0.006      0.012      0.454      0.650
+    G1AGEYRC          -0.008      0.014     -0.562      0.574
+    DISTRICT_4        -0.012      0.012     -0.995      0.320
+    DISTRICT_4         0.003      0.015      0.228      0.820
+    DISTRICT_4        -0.017      0.014     -1.233      0.217
+    ETHNI_BIN          0.024      0.013      1.850      0.064
+
+ T6_EXTNO ON
+    T5_LADDER_        -0.026      0.024     -1.097      0.273
+    T5_EXTNOSU         0.642      0.026     24.638      0.000
+    G1SEX              0.021      0.022      0.948      0.343
+    G1AGEYRC           0.006      0.025      0.256      0.798
+    DISTRICT_4        -0.060      0.025     -2.391      0.017
+    DISTRICT_4        -0.036      0.028     -1.309      0.191
+    DISTRICT_4        -0.026      0.024     -1.089      0.276
+    ETHNI_BIN          0.003      0.026      0.129      0.898
+
+ T2_LADDE WITH
+    T2_EXTNOSU        -0.063      0.022     -2.920      0.003
+
+ T3_LADDE WITH
+    T3_EXTNOSU        -0.070      0.028     -2.509      0.012
+
+ T4_LADDE WITH
+    T4_EXTNOSU        -0.020      0.030     -0.657      0.511
+
+ T5_LADDE WITH
+    T5_EXTNOSU         0.015      0.029      0.531      0.595
+
+ T6_LADDE WITH
+    T6_EXTNOSU        -0.048      0.031     -1.564      0.118
+
+ G1AGEYRC WITH
+    G1SEX              0.030      0.021      1.439      0.150
+
+ DISTRICT WITH
+    G1SEX              0.007      0.021      0.327      0.744
+    G1AGEYRC           0.247      0.020     12.514      0.000
+
+ DISTRICT WITH
+    G1SEX              0.013      0.021      0.626      0.531
+    G1AGEYRC          -0.405      0.014    -28.748      0.000
+    DISTRICT_4        -0.320      0.009    -34.601      0.000
+
+ DISTRICT WITH
+    G1SEX              0.026      0.021      1.234      0.217
+    G1AGEYRC          -0.277      0.014    -19.938      0.000
+    DISTRICT_4        -0.261      0.008    -30.763      0.000
+    DISTRICT_4        -0.229      0.008    -29.344      0.000
+
+ ETHNI_BI WITH
+    G1SEX              0.012      0.021      0.586      0.558
+    G1AGEYRC           0.098      0.022      4.551      0.000
+    DISTRICT_4        -0.019      0.021     -0.929      0.353
+    DISTRICT_4        -0.045      0.020     -2.267      0.023
+    DISTRICT_4        -0.091      0.016     -5.687      0.000
+
+ Means
+    G1SEX              0.985      0.021     47.207      0.000
+    G1AGEYRC          19.997      0.255     78.538      0.000
+    DISTRICT_4         0.604      0.014     41.792      0.000
+    DISTRICT_4         0.530      0.014     39.075      0.000
+    DISTRICT_4         0.432      0.013     34.354      0.000
+    ETHNI_BIN          0.395      0.012     32.271      0.000
+
+ Intercepts
+    T2_LADDER_         2.865      0.536      5.349      0.000
+    T3_LADDER_         0.617      0.289      2.134      0.033
+    T4_LADDER_         0.583      0.312      1.867      0.062
+    T5_LADDER_         1.426      0.336      4.242      0.000
+    T6_LADDER_         0.408      0.280      1.458      0.145
+    T2_EXTNOSU        -0.737      0.538     -1.370      0.171
+    T3_EXTNOSU         1.126      0.489      2.302      0.021
+    T4_EXTNOSU        -0.860      0.506     -1.700      0.089
+    T5_EXTNOSU         0.896      0.502      1.784      0.074
+    T6_EXTNOSU         0.009      0.521      0.017      0.987
+
+ Variances
+    G1SEX              1.000      0.000    999.000    999.000
+    G1AGEYRC           1.000      0.000    999.000    999.000
+    DISTRICT_4         1.000      0.000    999.000    999.000
+    DISTRICT_4         1.000      0.000    999.000    999.000
+    DISTRICT_4         1.000      0.000    999.000    999.000
+    ETHNI_BIN          1.000      0.000    999.000    999.000
+
+ Residual Variances
+    T2_LADDER_         0.977      0.006    150.971      0.000
+    T3_LADDER_         0.204      0.011     18.361      0.000
+    T4_LADDER_         0.216      0.012     17.685      0.000
+    T5_LADDER_         0.267      0.015     18.215      0.000
+    T6_LADDER_         0.147      0.012     11.896      0.000
+    T2_EXTNOSU         0.990      0.004    227.691      0.000
+    T3_EXTNOSU         0.672      0.022     30.508      0.000
+    T4_EXTNOSU         0.689      0.025     28.057      0.000
+    T5_EXTNOSU         0.605      0.030     20.270      0.000
+    T6_EXTNOSU         0.575      0.032     17.803      0.000
+
+
+<a name='rsquare' class='heading'>R-SQUARE</a>
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    T2_LADDE           0.023      0.006      3.534      0.000
+    T3_LADDE           0.796      0.011     71.535      0.000
+    T4_LADDE           0.784      0.012     64.264      0.000
+    T5_LADDE           0.733      0.015     49.882      0.000
+    T6_LADDE           0.853      0.012     68.795      0.000
+    T2_EXTNO           0.010      0.004      2.202      0.028
+    T3_EXTNO           0.328      0.022     14.888      0.000
+    T4_EXTNO           0.311      0.025     12.675      0.000
+    T5_EXTNO           0.395      0.030     13.212      0.000
+    T6_EXTNO           0.425      0.032     13.171      0.000
+
+
+<a name='tech1_output' class='heading'>TECHNICAL 1 OUTPUT</a>
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           NU
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           NU
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           NU
+              ETHNI_BI
+              ________
+                  0
+
+
+           LAMBDA
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T2_LADDE           0             0             0             0             0
+ T3_LADDE           0             0             0             0             0
+ T4_LADDE           0             0             0             0             0
+ T5_LADDE           0             0             0             0             0
+ T6_LADDE           0             0             0             0             0
+ T2_EXTNO           0             0             0             0             0
+ T3_EXTNO           0             0             0             0             0
+ T4_EXTNO           0             0             0             0             0
+ T5_EXTNO           0             0             0             0             0
+ T6_EXTNO           0             0             0             0             0
+ G1SEX              0             0             0             0             0
+ G1AGEYRC           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ ETHNI_BI           0             0             0             0             0
+
+
+           LAMBDA
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE           0             0             0             0             0
+ T3_LADDE           0             0             0             0             0
+ T4_LADDE           0             0             0             0             0
+ T5_LADDE           0             0             0             0             0
+ T6_LADDE           0             0             0             0             0
+ T2_EXTNO           0             0             0             0             0
+ T3_EXTNO           0             0             0             0             0
+ T4_EXTNO           0             0             0             0             0
+ T5_EXTNO           0             0             0             0             0
+ T6_EXTNO           0             0             0             0             0
+ G1SEX              0             0             0             0             0
+ G1AGEYRC           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ ETHNI_BI           0             0             0             0             0
+
+
+           LAMBDA
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+ T2_LADDE           0             0             0             0             0
+ T3_LADDE           0             0             0             0             0
+ T4_LADDE           0             0             0             0             0
+ T5_LADDE           0             0             0             0             0
+ T6_LADDE           0             0             0             0             0
+ T2_EXTNO           0             0             0             0             0
+ T3_EXTNO           0             0             0             0             0
+ T4_EXTNO           0             0             0             0             0
+ T5_EXTNO           0             0             0             0             0
+ T6_EXTNO           0             0             0             0             0
+ G1SEX              0             0             0             0             0
+ G1AGEYRC           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ ETHNI_BI           0             0             0             0             0
+
+
+           LAMBDA
+              ETHNI_BI
+              ________
+ T2_LADDE           0
+ T3_LADDE           0
+ T4_LADDE           0
+ T5_LADDE           0
+ T6_LADDE           0
+ T2_EXTNO           0
+ T3_EXTNO           0
+ T4_EXTNO           0
+ T5_EXTNO           0
+ T6_EXTNO           0
+ G1SEX              0
+ G1AGEYRC           0
+ DISTRICT           0
+ DISTRICT           0
+ DISTRICT           0
+ ETHNI_BI           0
+
+
+           THETA
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T2_LADDE           0
+ T3_LADDE           0             0
+ T4_LADDE           0             0             0
+ T5_LADDE           0             0             0             0
+ T6_LADDE           0             0             0             0             0
+ T2_EXTNO           0             0             0             0             0
+ T3_EXTNO           0             0             0             0             0
+ T4_EXTNO           0             0             0             0             0
+ T5_EXTNO           0             0             0             0             0
+ T6_EXTNO           0             0             0             0             0
+ G1SEX              0             0             0             0             0
+ G1AGEYRC           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ ETHNI_BI           0             0             0             0             0
+
+
+           THETA
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+ T2_EXTNO           0
+ T3_EXTNO           0             0
+ T4_EXTNO           0             0             0
+ T5_EXTNO           0             0             0             0
+ T6_EXTNO           0             0             0             0             0
+ G1SEX              0             0             0             0             0
+ G1AGEYRC           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ ETHNI_BI           0             0             0             0             0
+
+
+           THETA
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+ G1SEX              0
+ G1AGEYRC           0             0
+ DISTRICT           0             0             0
+ DISTRICT           0             0             0             0
+ DISTRICT           0             0             0             0             0
+ ETHNI_BI           0             0             0             0             0
+
+
+           THETA
+              ETHNI_BI
+              ________
+ ETHNI_BI           0
+
+
+           ALPHA
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+                  1             2             3             4             5
+
+
+           ALPHA
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+                  6             7             8             9            10
+
+
+           ALPHA
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+                 11            12            13            14            15
+
+
+           ALPHA
+              ETHNI_BI
+              ________
+                 16
+
+
+           BETA
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T2_LADDE           0             0             0             0             0
+ T3_LADDE          23             0             0             0             0
+ T4_LADDE           0            31             0             0             0
+ T5_LADDE           0             0            39             0             0
+ T6_LADDE           0             0             0            47             0
+ T2_EXTNO           0             0             0             0             0
+ T3_EXTNO          61             0             0             0             0
+ T4_EXTNO           0            69             0             0             0
+ T5_EXTNO           0             0            77             0             0
+ T6_EXTNO           0             0             0            85             0
+ G1SEX              0             0             0             0             0
+ G1AGEYRC           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ ETHNI_BI           0             0             0             0             0
+
+
+           BETA
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE           0             0             0             0             0
+ T3_LADDE          24             0             0             0             0
+ T4_LADDE           0            32             0             0             0
+ T5_LADDE           0             0            40             0             0
+ T6_LADDE           0             0             0            48             0
+ T2_EXTNO           0             0             0             0             0
+ T3_EXTNO          62             0             0             0             0
+ T4_EXTNO           0            70             0             0             0
+ T5_EXTNO           0             0            78             0             0
+ T6_EXTNO           0             0             0            86             0
+ G1SEX              0             0             0             0             0
+ G1AGEYRC           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ ETHNI_BI           0             0             0             0             0
+
+
+           BETA
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+ T2_LADDE          17            18            19            20            21
+ T3_LADDE          25            26            27            28            29
+ T4_LADDE          33            34            35            36            37
+ T5_LADDE          41            42            43            44            45
+ T6_LADDE          49            50            51            52            53
+ T2_EXTNO          55            56            57            58            59
+ T3_EXTNO          63            64            65            66            67
+ T4_EXTNO          71            72            73            74            75
+ T5_EXTNO          79            80            81            82            83
+ T6_EXTNO          87            88            89            90            91
+ G1SEX              0             0             0             0             0
+ G1AGEYRC           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ ETHNI_BI           0             0             0             0             0
+
+
+           BETA
+              ETHNI_BI
+              ________
+ T2_LADDE          22
+ T3_LADDE          30
+ T4_LADDE          38
+ T5_LADDE          46
+ T6_LADDE          54
+ T2_EXTNO          60
+ T3_EXTNO          68
+ T4_EXTNO          76
+ T5_EXTNO          84
+ T6_EXTNO          92
+ G1SEX              0
+ G1AGEYRC           0
+ DISTRICT           0
+ DISTRICT           0
+ DISTRICT           0
+ ETHNI_BI           0
+
+
+           PSI
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T2_LADDE          93
+ T3_LADDE           0            94
+ T4_LADDE           0             0            95
+ T5_LADDE           0             0             0            96
+ T6_LADDE           0             0             0             0            97
+ T2_EXTNO          98             0             0             0             0
+ T3_EXTNO           0           100             0             0             0
+ T4_EXTNO           0             0           102             0             0
+ T5_EXTNO           0             0             0           104             0
+ T6_EXTNO           0             0             0             0           106
+ G1SEX              0             0             0             0             0
+ G1AGEYRC           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ ETHNI_BI           0             0             0             0             0
+
+
+           PSI
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+ T2_EXTNO          99
+ T3_EXTNO           0           101
+ T4_EXTNO           0             0           103
+ T5_EXTNO           0             0             0           105
+ T6_EXTNO           0             0             0             0           107
+ G1SEX              0             0             0             0             0
+ G1AGEYRC           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ DISTRICT           0             0             0             0             0
+ ETHNI_BI           0             0             0             0             0
+
+
+           PSI
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+ G1SEX            108
+ G1AGEYRC         109           110
+ DISTRICT         111           112           113
+ DISTRICT         114           115           116           117
+ DISTRICT         118           119           120           121           122
+ ETHNI_BI         123           124           125           126           127
+
+
+           PSI
+              ETHNI_BI
+              ________
+ ETHNI_BI         128
+
+
+     STARTING VALUES
+
+
+           NU
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              ETHNI_BI
+              ________
+                0.000
+
+
+           LAMBDA
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T2_LADDE       1.000         0.000         0.000         0.000         0.000
+ T3_LADDE       0.000         1.000         0.000         0.000         0.000
+ T4_LADDE       0.000         0.000         1.000         0.000         0.000
+ T5_LADDE       0.000         0.000         0.000         1.000         0.000
+ T6_LADDE       0.000         0.000         0.000         0.000         1.000
+ T2_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T3_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T6_EXTNO       0.000         0.000         0.000         0.000         0.000
+ G1SEX          0.000         0.000         0.000         0.000         0.000
+ G1AGEYRC       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ ETHNI_BI       0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE       0.000         0.000         0.000         0.000         0.000
+ T3_LADDE       0.000         0.000         0.000         0.000         0.000
+ T4_LADDE       0.000         0.000         0.000         0.000         0.000
+ T5_LADDE       0.000         0.000         0.000         0.000         0.000
+ T6_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_EXTNO       1.000         0.000         0.000         0.000         0.000
+ T3_EXTNO       0.000         1.000         0.000         0.000         0.000
+ T4_EXTNO       0.000         0.000         1.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         1.000         0.000
+ T6_EXTNO       0.000         0.000         0.000         0.000         1.000
+ G1SEX          0.000         0.000         0.000         0.000         0.000
+ G1AGEYRC       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ ETHNI_BI       0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+ T2_LADDE       0.000         0.000         0.000         0.000         0.000
+ T3_LADDE       0.000         0.000         0.000         0.000         0.000
+ T4_LADDE       0.000         0.000         0.000         0.000         0.000
+ T5_LADDE       0.000         0.000         0.000         0.000         0.000
+ T6_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T3_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T6_EXTNO       0.000         0.000         0.000         0.000         0.000
+ G1SEX          1.000         0.000         0.000         0.000         0.000
+ G1AGEYRC       0.000         1.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         1.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         1.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         1.000
+ ETHNI_BI       0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              ETHNI_BI
+              ________
+ T2_LADDE       0.000
+ T3_LADDE       0.000
+ T4_LADDE       0.000
+ T5_LADDE       0.000
+ T6_LADDE       0.000
+ T2_EXTNO       0.000
+ T3_EXTNO       0.000
+ T4_EXTNO       0.000
+ T5_EXTNO       0.000
+ T6_EXTNO       0.000
+ G1SEX          0.000
+ G1AGEYRC       0.000
+ DISTRICT       0.000
+ DISTRICT       0.000
+ DISTRICT       0.000
+ ETHNI_BI       1.000
+
+
+           THETA
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T2_LADDE       0.000
+ T3_LADDE       0.000         0.000
+ T4_LADDE       0.000         0.000         0.000
+ T5_LADDE       0.000         0.000         0.000         0.000
+ T6_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T3_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T6_EXTNO       0.000         0.000         0.000         0.000         0.000
+ G1SEX          0.000         0.000         0.000         0.000         0.000
+ G1AGEYRC       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ ETHNI_BI       0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+ T2_EXTNO       0.000
+ T3_EXTNO       0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000
+ T6_EXTNO       0.000         0.000         0.000         0.000         0.000
+ G1SEX          0.000         0.000         0.000         0.000         0.000
+ G1AGEYRC       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ ETHNI_BI       0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+ G1SEX          0.000
+ G1AGEYRC       0.000         0.000
+ DISTRICT       0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ ETHNI_BI       0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              ETHNI_BI
+              ________
+ ETHNI_BI       0.000
+
+
+           ALPHA
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+                3.275         0.691         0.578         1.324         0.382
+
+
+           ALPHA
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+               -0.738         1.142        -0.868         0.921         0.009
+
+
+           ALPHA
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+                0.493        11.111         0.267         0.219         0.157
+
+
+           ALPHA
+              ETHNI_BI
+              ________
+                0.135
+
+
+           BETA
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T2_LADDE       0.000         0.000         0.000         0.000         0.000
+ T3_LADDE       0.868         0.000         0.000         0.000         0.000
+ T4_LADDE       0.000         0.780         0.000         0.000         0.000
+ T5_LADDE       0.000         0.000         0.792         0.000         0.000
+ T6_LADDE       0.000         0.000         0.000         0.927         0.000
+ T2_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T3_EXTNO      -0.053         0.000         0.000         0.000         0.000
+ T4_EXTNO       0.000        -0.038         0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000        -0.039         0.000         0.000
+ T6_EXTNO       0.000         0.000         0.000        -0.028         0.000
+ G1SEX          0.000         0.000         0.000         0.000         0.000
+ G1AGEYRC       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ ETHNI_BI       0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+ T2_LADDE       0.000         0.000         0.000         0.000         0.000
+ T3_LADDE      -0.063         0.000         0.000         0.000         0.000
+ T4_LADDE       0.000        -0.031         0.000         0.000         0.000
+ T5_LADDE       0.000         0.000        -0.046         0.000         0.000
+ T6_LADDE       0.000         0.000         0.000        -0.021         0.000
+ T2_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T3_EXTNO       0.565         0.000         0.000         0.000         0.000
+ T4_EXTNO       0.000         0.536         0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.627         0.000         0.000
+ T6_EXTNO       0.000         0.000         0.000         0.627         0.000
+ G1SEX          0.000         0.000         0.000         0.000         0.000
+ G1AGEYRC       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ ETHNI_BI       0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+ T2_LADDE      -0.113        -0.066        -0.156        -0.056        -0.377
+ T3_LADDE      -0.042        -0.032         0.067        -0.094        -0.092
+ T4_LADDE       0.001         0.006        -0.048         0.017         0.031
+ T5_LADDE      -0.017        -0.058         0.055        -0.024        -0.047
+ T6_LADDE       0.010        -0.013        -0.026         0.008        -0.043
+ T2_EXTNO       0.104         0.059        -0.017         0.115        -0.059
+ T3_EXTNO       0.082        -0.089        -0.126        -0.065        -0.058
+ T4_EXTNO      -0.061         0.089        -0.024         0.044        -0.102
+ T5_EXTNO       0.024        -0.069        -0.105        -0.049        -0.110
+ T6_EXTNO       0.042         0.012        -0.136        -0.088        -0.072
+ G1SEX          0.000         0.000         0.000         0.000         0.000
+ G1AGEYRC       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ ETHNI_BI       0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              ETHNI_BI
+              ________
+ T2_LADDE      -0.328
+ T3_LADDE       0.083
+ T4_LADDE       0.058
+ T5_LADDE       0.001
+ T6_LADDE       0.064
+ T2_EXTNO       0.158
+ T3_EXTNO       0.030
+ T4_EXTNO       0.220
+ T5_EXTNO       0.065
+ T6_EXTNO       0.010
+ G1SEX          0.000
+ G1AGEYRC       0.000
+ DISTRICT       0.000
+ DISTRICT       0.000
+ DISTRICT       0.000
+ ETHNI_BI       0.000
+
+
+           PSI
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T2_LADDE       1.277
+ T3_LADDE       0.000         0.256
+ T4_LADDE       0.000         0.000         0.212
+ T5_LADDE       0.000         0.000         0.000         0.231
+ T6_LADDE       0.000         0.000         0.000         0.000         0.129
+ T2_EXTNO      -0.071         0.000         0.000         0.000         0.000
+ T3_EXTNO       0.000        -0.029         0.000         0.000         0.000
+ T4_EXTNO       0.000         0.000        -0.008         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.006         0.000
+ T6_EXTNO       0.000         0.000         0.000         0.000        -0.013
+ G1SEX          0.000         0.000         0.000         0.000         0.000
+ G1AGEYRC       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ ETHNI_BI       0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+ T2_EXTNO       0.993
+ T3_EXTNO       0.000         0.691
+ T4_EXTNO       0.000         0.000         0.703
+ T5_EXTNO       0.000         0.000         0.000         0.639
+ T6_EXTNO       0.000         0.000         0.000         0.000         0.580
+ G1SEX          0.000         0.000         0.000         0.000         0.000
+ G1AGEYRC       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ DISTRICT       0.000         0.000         0.000         0.000         0.000
+ ETHNI_BI       0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+ G1SEX          0.250
+ G1AGEYRC       0.008         0.309
+ DISTRICT       0.002         0.061         0.196
+ DISTRICT       0.003        -0.093        -0.059         0.171
+ DISTRICT       0.005        -0.056        -0.042        -0.034         0.132
+ ETHNI_BI       0.002         0.019        -0.003        -0.006        -0.011
+
+
+           PSI
+              ETHNI_BI
+              ________
+ ETHNI_BI       0.117
+
+
+<a name='tech4_output' class='heading'>TECHNICAL 4 OUTPUT</a>
+
+
+     ESTIMATES DERIVED FROM THE MODEL
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+                2.327         2.331         2.467         2.622         2.671
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+                0.006         0.015         0.031         0.045         0.047
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+                0.493        11.111         0.267         0.219         0.157
+
+
+           ESTIMATED MEANS FOR THE LATENT VARIABLES
+              ETHNI_BI
+              ________
+                0.135
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+                0.025         0.025         0.023         0.023         0.025
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+                0.022         0.025         0.025         0.027         0.029
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+                0.011         0.012         0.009         0.009         0.008
+
+
+           S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              ETHNI_BI
+              ________
+                0.007
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+               93.946        93.381       108.083       113.448       107.889
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+                0.267         0.612         1.239         1.647         1.606
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+               46.518       944.095        28.522        25.029        20.376
+
+
+           EST./S.E. FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              ETHNI_BI
+              ________
+               18.655
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+                0.790         0.541         0.215         0.100         0.108
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED MEANS FOR THE LATENT VARIABLES
+              ETHNI_BI
+              ________
+                0.000
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T2_LADDE       1.306
+ T3_LADDE       1.137         1.256
+ T4_LADDE       0.889         0.982         0.982
+ T5_LADDE       0.710         0.787         0.785         0.862
+ T6_LADDE       0.660         0.732         0.730         0.801         0.875
+ T2_EXTNO      -0.076        -0.130        -0.117        -0.109        -0.103
+ T3_EXTNO      -0.112        -0.166        -0.158        -0.152        -0.146
+ T4_EXTNO      -0.105        -0.135        -0.127        -0.149        -0.148
+ T5_EXTNO      -0.098        -0.121        -0.116        -0.116        -0.126
+ T6_EXTNO      -0.081        -0.098        -0.094        -0.098        -0.115
+ G1SEX         -0.032        -0.041        -0.032        -0.031        -0.026
+ G1AGEYRC      -0.011        -0.001        -0.003        -0.014        -0.015
+ DISTRICT      -0.015         0.008        -0.005         0.007         0.003
+ DISTRICT       0.020         0.002         0.005         0.003         0.008
+ DISTRICT      -0.035        -0.040        -0.027        -0.025        -0.027
+ ETHNI_BI      -0.035        -0.021        -0.010        -0.010        -0.002
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+ T2_EXTNO       1.002
+ T3_EXTNO       0.573         1.028
+ T4_EXTNO       0.318         0.559         1.020
+ T5_EXTNO       0.206         0.361         0.648         1.056
+ T6_EXTNO       0.134         0.235         0.414         0.670         1.008
+ G1SEX          0.027         0.036         0.006         0.010         0.017
+ G1AGEYRC       0.014        -0.016         0.023        -0.001         0.008
+ DISTRICT      -0.004        -0.025        -0.012        -0.025        -0.034
+ DISTRICT       0.016         0.015         0.010         0.014         0.003
+ DISTRICT      -0.016        -0.002        -0.021        -0.018        -0.012
+ ETHNI_BI       0.020         0.016         0.038         0.032         0.024
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+ G1SEX          0.250
+ G1AGEYRC       0.008         0.309
+ DISTRICT       0.002         0.061         0.196
+ DISTRICT       0.003        -0.093        -0.059         0.171
+ DISTRICT       0.005        -0.056        -0.042        -0.034         0.132
+ ETHNI_BI       0.002         0.019        -0.003        -0.006        -0.011
+
+
+           ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              ETHNI_BI
+              ________
+ ETHNI_BI       0.117
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T2_LADDE       0.023
+ T3_LADDE       0.024         0.026
+ T4_LADDE       0.023         0.023         0.024
+ T5_LADDE       0.023         0.024         0.024         0.025
+ T6_LADDE       0.023         0.024         0.025         0.026         0.026
+ T2_EXTNO       0.025         0.026         0.021         0.018         0.017
+ T3_EXTNO       0.027         0.027         0.025         0.021         0.020
+ T4_EXTNO       0.027         0.029         0.026         0.026         0.025
+ T5_EXTNO       0.025         0.027         0.026         0.025         0.026
+ T6_EXTNO       0.025         0.027         0.027         0.028         0.028
+ G1SEX          0.012         0.012         0.011         0.011         0.011
+ G1AGEYRC       0.014         0.014         0.013         0.012         0.013
+ DISTRICT       0.011         0.011         0.010         0.009         0.010
+ DISTRICT       0.010         0.010         0.009         0.009         0.009
+ DISTRICT       0.008         0.008         0.008         0.008         0.008
+ ETHNI_BI       0.009         0.009         0.008         0.008         0.009
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+ T2_EXTNO       0.041
+ T3_EXTNO       0.031         0.041
+ T4_EXTNO       0.024         0.034         0.054
+ T5_EXTNO       0.020         0.031         0.047         0.064
+ T6_EXTNO       0.015         0.024         0.037         0.048         0.061
+ G1SEX          0.011         0.012         0.012         0.013         0.014
+ G1AGEYRC       0.013         0.013         0.014         0.015         0.014
+ DISTRICT       0.010         0.011         0.011         0.011         0.011
+ DISTRICT       0.009         0.010         0.010         0.010         0.010
+ DISTRICT       0.008         0.009         0.008         0.008         0.009
+ ETHNI_BI       0.008         0.009         0.011         0.011         0.011
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+ G1SEX          0.000
+ G1AGEYRC       0.006         0.008
+ DISTRICT       0.005         0.005         0.004
+ DISTRICT       0.004         0.004         0.003         0.005
+ DISTRICT       0.004         0.004         0.002         0.002         0.005
+ ETHNI_BI       0.004         0.004         0.003         0.003         0.002
+
+
+           S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              ETHNI_BI
+              ________
+ ETHNI_BI       0.005
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T2_LADDE      57.167
+ T3_LADDE      47.410        49.119
+ T4_LADDE      38.528        42.061        40.237
+ T5_LADDE      31.229        33.115        32.766        34.583
+ T6_LADDE      28.398        29.947        29.626        31.018        33.767
+ T2_EXTNO      -3.044        -4.974        -5.490        -6.077        -6.102
+ T3_EXTNO      -4.172        -6.153        -6.401        -7.137        -7.199
+ T4_EXTNO      -3.913        -4.669        -4.879        -5.787        -5.896
+ T5_EXTNO      -3.934        -4.500        -4.445        -4.612        -4.845
+ T6_EXTNO      -3.238        -3.616        -3.518        -3.508        -4.065
+ G1SEX         -2.566        -3.264        -2.871        -2.812        -2.296
+ G1AGEYRC      -0.773        -0.051        -0.267        -1.104        -1.186
+ DISTRICT      -1.319         0.701        -0.489         0.799         0.283
+ DISTRICT       2.023         0.209         0.542         0.350         0.858
+ DISTRICT      -4.156        -4.808        -3.403        -3.159        -3.354
+ ETHNI_BI      -4.033        -2.422        -1.266        -1.228        -0.271
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+ T2_EXTNO      24.676
+ T3_EXTNO      18.197        24.795
+ T4_EXTNO      13.228        16.303        18.996
+ T5_EXTNO      10.416        11.606        13.865        16.397
+ T6_EXTNO       8.782         9.790        11.085        14.003        16.559
+ G1SEX          2.456         3.030         0.533         0.773         1.248
+ G1AGEYRC       1.094        -1.247         1.604        -0.081         0.558
+ DISTRICT      -0.444        -2.399        -1.165        -2.251        -3.019
+ DISTRICT       1.800         1.559         1.076         1.380         0.292
+ DISTRICT      -2.049        -0.248        -2.751        -2.132        -1.354
+ ETHNI_BI       2.356         1.829         3.568         2.986         2.135
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+ G1SEX       1594.313
+ G1AGEYRC       1.439        38.138
+ DISTRICT       0.327        11.809        44.915
+ DISTRICT       0.626       -20.916       -22.773        34.812
+ DISTRICT       1.233       -15.685       -19.102       -17.939        25.041
+ ETHNI_BI       0.586         4.473        -0.928        -2.254        -5.445
+
+
+           EST./S.E. FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              ETHNI_BI
+              ________
+ ETHNI_BI      22.106
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T2_LADDE       0.000
+ T3_LADDE       0.000         0.000
+ T4_LADDE       0.000         0.000         0.000
+ T5_LADDE       0.000         0.000         0.000         0.000
+ T6_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_EXTNO       0.002         0.000         0.000         0.000         0.000
+ T3_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T6_EXTNO       0.001         0.000         0.000         0.000         0.000
+ G1SEX          0.010         0.001         0.004         0.005         0.022
+ G1AGEYRC       0.440         0.959         0.789         0.270         0.235
+ DISTRICT       0.187         0.483         0.625         0.424         0.778
+ DISTRICT       0.043         0.834         0.588         0.726         0.391
+ DISTRICT       0.000         0.000         0.001         0.002         0.001
+ ETHNI_BI       0.000         0.015         0.206         0.220         0.786
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+ T2_EXTNO       0.000
+ T3_EXTNO       0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000
+ T6_EXTNO       0.000         0.000         0.000         0.000         0.000
+ G1SEX          0.014         0.002         0.594         0.440         0.212
+ G1AGEYRC       0.274         0.212         0.109         0.935         0.577
+ DISTRICT       0.657         0.016         0.244         0.024         0.003
+ DISTRICT       0.072         0.119         0.282         0.168         0.771
+ DISTRICT       0.040         0.804         0.006         0.033         0.176
+ ETHNI_BI       0.018         0.067         0.000         0.003         0.033
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+ G1SEX          0.000
+ G1AGEYRC       0.150         0.000
+ DISTRICT       0.744         0.000         0.000
+ DISTRICT       0.531         0.000         0.000         0.000
+ DISTRICT       0.218         0.000         0.000         0.000         0.000
+ ETHNI_BI       0.558         0.000         0.353         0.024         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED COVARIANCE MATRIX FOR THE LATENT VARIABLES
+              ETHNI_BI
+              ________
+ ETHNI_BI       0.000
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T2_LADDE       1.000
+ T3_LADDE       0.888         1.000
+ T4_LADDE       0.785         0.884         1.000
+ T5_LADDE       0.669         0.756         0.853         1.000
+ T6_LADDE       0.617         0.698         0.788         0.923         1.000
+ T2_EXTNO      -0.066        -0.115        -0.118        -0.117        -0.110
+ T3_EXTNO      -0.097        -0.146        -0.158        -0.162        -0.154
+ T4_EXTNO      -0.091        -0.119        -0.127        -0.159        -0.156
+ T5_EXTNO      -0.084        -0.105        -0.114        -0.122        -0.131
+ T6_EXTNO      -0.070        -0.087        -0.094        -0.105        -0.122
+ G1SEX         -0.056        -0.072        -0.065        -0.066        -0.056
+ G1AGEYRC      -0.017        -0.001        -0.006        -0.026        -0.029
+ DISTRICT      -0.029         0.016        -0.011         0.018         0.007
+ DISTRICT       0.043         0.005         0.012         0.008         0.020
+ DISTRICT      -0.083        -0.098        -0.074        -0.073        -0.080
+ ETHNI_BI      -0.089        -0.055        -0.030        -0.033        -0.008
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+ T2_EXTNO       1.000
+ T3_EXTNO       0.564         1.000
+ T4_EXTNO       0.315         0.546         1.000
+ T5_EXTNO       0.200         0.347         0.624         1.000
+ T6_EXTNO       0.133         0.230         0.408         0.649         1.000
+ G1SEX          0.054         0.071         0.013         0.019         0.034
+ G1AGEYRC       0.025        -0.029         0.040        -0.002         0.014
+ DISTRICT      -0.010        -0.057        -0.027        -0.055        -0.076
+ DISTRICT       0.040         0.035         0.025         0.033         0.007
+ DISTRICT      -0.043        -0.006        -0.058        -0.047        -0.032
+ ETHNI_BI       0.058         0.048         0.109         0.092         0.069
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+ G1SEX          1.000
+ G1AGEYRC       0.030         1.000
+ DISTRICT       0.007         0.247         1.000
+ DISTRICT       0.013        -0.405        -0.320         1.000
+ DISTRICT       0.026        -0.277        -0.261        -0.229         1.000
+ ETHNI_BI       0.012         0.098        -0.019        -0.045        -0.091
+
+
+           ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              ETHNI_BI
+              ________
+ ETHNI_BI       1.000
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T2_LADDE       0.000
+ T3_LADDE       0.007         0.000
+ T4_LADDE       0.009         0.007         0.000
+ T5_LADDE       0.012         0.011         0.009         0.000
+ T6_LADDE       0.013         0.013         0.011         0.007         0.000
+ T2_EXTNO       0.022         0.023         0.021         0.018         0.017
+ T3_EXTNO       0.023         0.023         0.024         0.021         0.020
+ T4_EXTNO       0.023         0.025         0.025         0.026         0.025
+ T5_EXTNO       0.021         0.023         0.025         0.026         0.026
+ T6_EXTNO       0.021         0.024         0.026         0.029         0.029
+ G1SEX          0.022         0.022         0.023         0.023         0.024
+ G1AGEYRC       0.022         0.022         0.023         0.024         0.024
+ DISTRICT       0.022         0.022         0.022         0.023         0.023
+ DISTRICT       0.021         0.022         0.022         0.023         0.023
+ DISTRICT       0.020         0.020         0.022         0.023         0.024
+ ETHNI_BI       0.022         0.023         0.024         0.027         0.028
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+ T2_EXTNO       0.000
+ T3_EXTNO       0.020         0.000
+ T4_EXTNO       0.018         0.023         0.000
+ T5_EXTNO       0.015         0.022         0.024         0.000
+ T6_EXTNO       0.013         0.019         0.026         0.025         0.000
+ G1SEX          0.022         0.023         0.024         0.025         0.027
+ G1AGEYRC       0.023         0.023         0.025         0.026         0.025
+ DISTRICT       0.022         0.024         0.024         0.024         0.025
+ DISTRICT       0.022         0.023         0.023         0.024         0.025
+ DISTRICT       0.021         0.024         0.021         0.022         0.023
+ ETHNI_BI       0.024         0.026         0.030         0.030         0.032
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+ G1SEX          0.000
+ G1AGEYRC       0.021         0.000
+ DISTRICT       0.021         0.020         0.000
+ DISTRICT       0.021         0.014         0.009         0.000
+ DISTRICT       0.021         0.014         0.008         0.008         0.000
+ ETHNI_BI       0.021         0.022         0.021         0.020         0.016
+
+
+           S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              ETHNI_BI
+              ________
+ ETHNI_BI       0.000
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T2_LADDE     999.000
+ T3_LADDE     136.558       999.000
+ T4_LADDE      85.182       126.411       999.000
+ T5_LADDE      55.249        67.619        95.477       999.000
+ T6_LADDE      46.929        55.149        71.089       135.094       999.000
+ T2_EXTNO      -3.068        -5.055        -5.602        -6.318        -6.351
+ T3_EXTNO      -4.252        -6.355        -6.652        -7.529        -7.611
+ T4_EXTNO      -4.027        -4.849        -5.099        -6.139        -6.267
+ T5_EXTNO      -3.995        -4.585        -4.545        -4.714        -4.976
+ T6_EXTNO      -3.287        -3.686        -3.589        -3.582        -4.175
+ G1SEX         -2.570        -3.272        -2.882        -2.831        -2.308
+ G1AGEYRC      -0.773        -0.051        -0.267        -1.105        -1.188
+ DISTRICT      -1.319         0.701        -0.489         0.800         0.283
+ DISTRICT       2.024         0.209         0.542         0.350         0.859
+ DISTRICT      -4.210        -4.889        -3.432        -3.185        -3.381
+ ETHNI_BI      -4.093        -2.436        -1.269        -1.230        -0.272
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+ T2_EXTNO     999.000
+ T3_EXTNO      28.775       999.000
+ T4_EXTNO      17.406        24.236       999.000
+ T5_EXTNO      13.172        15.798        25.818       999.000
+ T6_EXTNO      10.303        11.972        15.509        25.632       999.000
+ G1SEX          2.473         3.042         0.534         0.775         1.259
+ G1AGEYRC       1.094        -1.248         1.619        -0.081         0.559
+ DISTRICT      -0.444        -2.403        -1.164        -2.258        -3.059
+ DISTRICT       1.805         1.561         1.074         1.378         0.292
+ DISTRICT      -2.058        -0.248        -2.790        -2.158        -1.362
+ ETHNI_BI       2.378         1.839         3.672         3.028         2.147
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+ G1SEX        999.000
+ G1AGEYRC       1.439       999.000
+ DISTRICT       0.327        12.514       999.000
+ DISTRICT       0.626       -28.748       -34.601       999.000
+ DISTRICT       1.234       -19.938       -30.763       -29.344       999.000
+ ETHNI_BI       0.586         4.551        -0.929        -2.267        -5.687
+
+
+           EST./S.E. FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              ETHNI_BI
+              ________
+ ETHNI_BI     999.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              T2_LADDE      T3_LADDE      T4_LADDE      T5_LADDE      T6_LADDE
+              ________      ________      ________      ________      ________
+ T2_LADDE       0.000
+ T3_LADDE       0.000         0.000
+ T4_LADDE       0.000         0.000         0.000
+ T5_LADDE       0.000         0.000         0.000         0.000
+ T6_LADDE       0.000         0.000         0.000         0.000         0.000
+ T2_EXTNO       0.002         0.000         0.000         0.000         0.000
+ T3_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000         0.000
+ T6_EXTNO       0.001         0.000         0.000         0.000         0.000
+ G1SEX          0.010         0.001         0.004         0.005         0.021
+ G1AGEYRC       0.440         0.959         0.789         0.269         0.235
+ DISTRICT       0.187         0.483         0.625         0.424         0.778
+ DISTRICT       0.043         0.834         0.588         0.726         0.391
+ DISTRICT       0.000         0.000         0.001         0.001         0.001
+ ETHNI_BI       0.000         0.015         0.204         0.219         0.786
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              T2_EXTNO      T3_EXTNO      T4_EXTNO      T5_EXTNO      T6_EXTNO
+              ________      ________      ________      ________      ________
+ T2_EXTNO       0.000
+ T3_EXTNO       0.000         0.000
+ T4_EXTNO       0.000         0.000         0.000
+ T5_EXTNO       0.000         0.000         0.000         0.000
+ T6_EXTNO       0.000         0.000         0.000         0.000         0.000
+ G1SEX          0.013         0.002         0.593         0.438         0.208
+ G1AGEYRC       0.274         0.212         0.105         0.935         0.576
+ DISTRICT       0.657         0.016         0.244         0.024         0.002
+ DISTRICT       0.071         0.119         0.283         0.168         0.771
+ DISTRICT       0.040         0.804         0.005         0.031         0.173
+ ETHNI_BI       0.017         0.066         0.000         0.002         0.032
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              G1SEX         G1AGEYRC      DISTRICT      DISTRICT      DISTRICT
+              ________      ________      ________      ________      ________
+ G1SEX          0.000
+ G1AGEYRC       0.150         0.000
+ DISTRICT       0.744         0.000         0.000
+ DISTRICT       0.531         0.000         0.000         0.000
+ DISTRICT       0.217         0.000         0.000         0.000         0.000
+ ETHNI_BI       0.558         0.000         0.353         0.023         0.000
+
+
+           TWO-TAILED P-VALUE FOR ESTIMATED CORRELATION MATRIX FOR THE LATENT VARIABLES
+              ETHNI_BI
+              ________
+ ETHNI_BI       0.000
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    e:\onedrive - universiteit utrecht\trails agdelatt paper\submission eur child & adolescent psychiatry\peer review\fi
+
+     Beginning Time:  21:36:53
+        Ending Time:  21:36:58
+       Elapsed Time:  00:00:05
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2021 Muthen & Muthen
+</pre>
+</body>
+</html>
